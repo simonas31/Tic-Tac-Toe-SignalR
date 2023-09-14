@@ -1,0 +1,51 @@
+﻿﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Tic-Tac-Toe</title>
+
+    <style>
+        table {
+            margin: 0 auto;
+            table-layout: fixed;
+            font-size: 50px;
+        }
+
+        table td {
+            width: 100px;
+            height: 100px;
+        }
+
+        table tr {
+            border-bottom: 3px solid black;
+        }
+        table tr:last-child {
+            border-bottom: none;
+        }
+
+        table td {
+            border-right: 3px solid black;
+        }
+        table td:last-child {
+            border-right: none;
+        }
+    </style>
+</head>
+<body>
+    <main class="container text-center">
+        <h1>Tic-Tac-Toe</h1>
+
+        <div class="form-inline mx-auto" style="max-width: 400px;">
+            <div class="form-group mx-sm-3 mb-2" id="usernameGroup">
+                <label class="sr-only control-label mb-2" for="username">Username</label>
+                <input type="text" class="form-control" id="username" placeholder="Username" autofocus />
+            </div>
+            <button type="submit" id="findGame" class="btn btn-primary mb-2">Find Game</button>
+            <p id="status" class="help-block">Please enter your desired username.</p>
+        </div>
+        <table id="tableHidden" hidden>
+            <tbody id="board">
+            </tbody>
+        </table>
+    </main>
+</body>
+</html>
