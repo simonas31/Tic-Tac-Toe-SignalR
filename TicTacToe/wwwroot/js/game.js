@@ -28,25 +28,42 @@
     // Prevent players from joining again
     gameHub.on("playerJoined", (player) => {
         playerId = player['id'];
-        $('#usernameGroup').removeClass("has-error");
-        disableInput();
+        $('#usernameStatus').removeClass("text-danger");
+        //disableInput();
     });
 
     // The username is already taken
     gameHub.on("usernameTaken", () => {
-        $('#status').html("The username is already taken.");
-        $('#usernameGroup').addClass("has-error");
+        $('#usernameStatus').html("The username is already taken.");
+        $('#usernameStatus').addClass("text-danger");
+        enableInput();
+    });
+
+    gameHub.on("roomnameTaken", () => {
+        $('#gameStatus').html("The room name already exists.");
+        $('#gameStatus').addClass('text-danger');
+        enableInput();
+    });
+
+    gameHub.on("cannotEnterRoom", () => {
+        $('#gameStatus').html("The room is already full or it does not exist.");
+        $('#gameStatus').addClass('text-danger');
+        enableInput();
     });
 
     // The opponent left, so the game is over and allow the player to find a new game
     gameHub.on("opponentLeft", () => {
-        $('#status').html("Opponent has left. Game over.");
+        $('#gameStatus').html("Opponent has left. Game over.");
         endGame();
     });
 
     // Notify the player that they are in a waiting pool for another opponent
     gameHub.on("waitingList", () => {
-        $('#status').html("Waiting for an opponent.");
+        $('#gameStatus').html("Waiting for an opponent.");
+    });
+
+    gameHub.on("startHost", () => {
+        $('#gameStatus').html("Waiting for an opponent.");
     });
 
     // Starts a new game by displaying the board and showing whose turn it is
@@ -60,12 +77,12 @@
 
     // Handles the case where a user tried to place a piece not on their turn
     gameHub.on("notPlayersTurn", () => {
-        $('#status').html("Please wait your turn.");
+        $('#gameStatus').html("Please wait your turn.");
     });
 
     // Display a message if the move is not valid
     gameHub.on("notValidMove", () => {
-        $('#status').html("Please choose another location.");
+        $('#gameStatus').html("Please choose another location.");
     });
 
     // A piece has been placed on the board
@@ -82,44 +99,83 @@
 
     // Handle the tie game - game over scenario
     gameHub.on("tieGame", () => {
-        $('#status').html("Tie!");
+        $('#gameStatus').html("Tie!");
         endGame();
     });
 
     // Handle the tie game - game over scenario
     gameHub.on("winner", (playerName) => {
-        $('#status').html("Winner: " + playerName);
+        $('#gameStatus').html("Winner: " + playerName);
         endGame();
+    });
+
+    gameHub.on("couldNotJoinGame", () => {
+        $('#gameStatus').html("Could not join game.");
+    });
+
+    gameHub.on("gameEnded", () => {
+        $('#gameStatus').html("Game ended.");
+    });
+
+    $('#hostGame').click(() => {
+        let result = removeWhiteSpace();
+        if (result[0]) {
+            disableInput();
+            gameHub.invoke("HostGame", result[1], result[2]);
+        }
     });
 
     // CLIENT BEHAVIORS
     // Call the server to find a game if the button is clicked
-    $('#findGame').click(() => {
-        const chosenUsername = $('#username').val();
-        gameHub.invoke("FindGame", chosenUsername);
-    });
+    $('#joinGame').click(() => {
+        let result = removeWhiteSpace();
 
-    // Pressing 'Enter' will automatically click the Find Game button
-    $('#username').keypress(function (e) {
-        if ((e.which && e.which == 13) || (e.keyCode && e.keyCode == 13)) {
-            $('#findGame').click();
-            return false;
+        if (result[0]) {
+            disableInput();
+            gameHub.invoke("JoinGame", result[1], result[2]);
         }
-
-        return true;
     });
 
+    // Removes whitespace from values to check if they are not empty
+    function removeWhiteSpace() {
+        const choseUsername = $('#username').val();
+        const chosenRoomName = $('#roomName').val();
+        let trimedRoomName = $.trim(chosenRoomName);
+        let trimedUsername = $.trim(choseUsername);
+
+        if (trimedRoomName.length == 0) {
+            $('#roomNameStatus').html("Please enter not empty room name.");
+            $('#roomNameStatus').addClass("text-danger");
+            return [false];
+        } else if (trimedUsername.length == 0) {
+            $('#usernameStatus').html("Please enter not empty username.");
+            $('#usernameStatus').addClass("text-danger");
+            $('#roomNameStatus').html("");
+            $('#roomNameStatus').removeClass("text-danger");
+            return [false];
+        } else {
+            $('#roomNameStatus').html("");
+            $('#usernameStatus').removeClass("text-danger");
+            $('#usernameStatus').html("");
+            return [true, choseUsername, chosenRoomName];
+        }
+    }
+    
     // Enables username and Find Game inputs
     function enableInput() {
         $('#username').removeAttr('disabled');
-        $('#findGame').removeAttr('disabled');
+        $('#joinGame').removeAttr('disabled');
+        $('#roomName').removeAttr('disabled');
+        $('#hostGame').removeAttr('disabled');
         $('#username').focus();
     }
 
     // Disables username and Find Game inputs
     function disableInput() {
         $('#username').attr('disabled', 'disabled');
-        $('#findGame').attr('disabled', 'disabled');
+        $('#roomName').attr('disabled', 'disabled');
+        $('#hostGame').attr('disabled', 'disabled');
+        $('#joinGame').attr('disabled', 'disabled');
     }
 
     // Game over business logic should disable board button handlers and
@@ -141,15 +197,15 @@
 
         // Do not overwrite opponent's name if it is being displayed
         if (isDisplayingOpponent) {
-            $('#status').html($('#status').html() + turnMessage);
+            $('#gameStatus').html($('#gameStatus').html() + turnMessage);
         } else {
-            $('#status').html(turnMessage);
+            $('#gameStatus').html(turnMessage);
         }
     }
 
     // Displays the opponent's name
     function displayOpponent(opponent) {
-        $('#status').html("You are playing against: " + opponent.Name + "<br />");
+        $('#gameStatus').html("You are playing against: " + opponent.Name + "<br />");
     }
   
     // Build and display the board

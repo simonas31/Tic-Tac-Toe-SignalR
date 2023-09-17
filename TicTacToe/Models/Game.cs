@@ -10,34 +10,41 @@ namespace TicTacToe.Models
 	public class Game
 	{
 		private bool isFirstPlayersTurn;
-
+		
 		/// <summary>
 		/// Creates a new game object.
 		/// </summary>
 		/// <param name="player1">The first player to join the game.</param>
 		/// <param name="player2">The second player to join the game.</param>
-		public Game(Player player1, Player player2)
+		public Game(Player player1, Player player2, string roomName)
 		{
 			this.Player1 = player1;
 			this.Player2 = player2;
-			this.Id = Guid.NewGuid().ToString("d");
+			this.GameRoomName = roomName;
 			this.Board = new Board();
 
 			this.isFirstPlayersTurn = true;
 
 			// Link the players to the game as well
-			this.Player1.GameId = this.Id;
-			this.Player2.GameId = this.Id;
+			this.Player1.PlayingRoomName = this.GameRoomName;
+            this.Player1.Piece = "X";
 
-			// Assign piece types to each player
-			this.Player1.Piece = "X";
-			this.Player2.Piece = "O";
+            if (this.Player2 != null)
+			{
+				this.Player2.PlayingRoomName = this.GameRoomName;
+                this.Player2.Piece = "O";
+            }
 		}
 
+		///// <summary>
+		///// A unique identifier for this game.
+		///// </summary>
+		//public string Id { get; set; }
+
 		/// <summary>
-		/// A unique identifier for this game. Also used as the group name.
+		/// Game room name identifier.
 		/// </summary>
-		public string Id { get; set; }
+		public string GameRoomName { get; set; }
 
 		/// <summary>
 		/// One of two partipants of the game.
@@ -47,7 +54,7 @@ namespace TicTacToe.Models
 		/// <summary>
 		/// One of two participants of the game.
 		/// </summary>
-		public Player Player2 { get; set; }
+		public Player ?Player2 { get; set; }
 
 		/// <summary>
 		/// The board that represents the tic-tac-toe game.
@@ -126,7 +133,7 @@ namespace TicTacToe.Models
 		public override string ToString()
 		{
 			return String.Format("(Id={0}, Player1={1}, Player2={2}, Board={3})",
-				this.Id, this.Player1, this.Player2, this.Board);
+				this.GameRoomName, this.Player1, this.Player2, this.Board);
 		}
 	}
 }

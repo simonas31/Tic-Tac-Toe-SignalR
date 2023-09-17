@@ -177,11 +177,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\babar\\Desktop\\UNI\\7 semestras\\Objektinis programu projektavimas(Design patterns)\\TicTacToe\\TicTacToe.csproj",
+      "projectUniqueName": "C:\\Users\\babar\\Desktop\\UNI\\7 semestras\\Objektinis programu projektavimas(Design patterns)\\Tic-Tac-Toe-SignalR\\TicTacToe\\TicTacToe.csproj",
       "projectName": "TicTacToe",
-      "projectPath": "C:\\Users\\babar\\Desktop\\UNI\\7 semestras\\Objektinis programu projektavimas(Design patterns)\\TicTacToe\\TicTacToe.csproj",
+      "projectPath": "C:\\Users\\babar\\Desktop\\UNI\\7 semestras\\Objektinis programu projektavimas(Design patterns)\\Tic-Tac-Toe-SignalR\\TicTacToe\\TicTacToe.csproj",
       "packagesPath": "C:\\Users\\babar\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\babar\\Desktop\\UNI\\7 semestras\\Objektinis programu projektavimas(Design patterns)\\TicTacToe\\obj\\",
+      "outputPath": "C:\\Users\\babar\\Desktop\\UNI\\7 semestras\\Objektinis programu projektavimas(Design patterns)\\Tic-Tac-Toe-SignalR\\TicTacToe\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Users\\babar\\AppData\\Roaming\\Godot\\mono\\GodotNuGetFallbackFolder",

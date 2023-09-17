@@ -34,14 +34,36 @@
     <main class="container text-center">
         <h1>Tic-Tac-Toe</h1>
 
-        <div class="form-inline mx-auto" style="max-width: 400px;">
-            <div class="form-group mx-sm-3 mb-2" id="usernameGroup">
-                <label class="sr-only control-label mb-2" for="username">Username</label>
-                <input type="text" class="form-control" id="username" placeholder="Username" autofocus />
+        <div class="d-flex flex-row mx-auto justify-content-center" style="max-width: 800px;">
+            @* Host game *@
+            <div class="">
+                <label class="sr-only control-label mb-2" for="roomName">Room name</label>
+                <div class="d-flex flex-row justify-content-center">
+                    <div class="form-group mx-sm-3 mb-2" id="hostGameGroup">
+                        <input type="text" class="form-control" id="roomName" placeholder="Room name" autofocus />
+                    </div>
+                    <button type="submit" id="hostGame" class="btn btn-info mb-2">Host Game</button>
+                </div>
+                <p id="roomNameStatus" class="help-block">If you want to host the game please enter <br> room name and username.</p>
             </div>
-            <button type="submit" id="findGame" class="btn btn-primary mb-2">Find Game</button>
-            <p id="status" class="help-block">Please enter your desired username.</p>
+
+            <div class="vr mx-auto"></div>
+
+            @* Join game *@
+            <div class="">
+                <label class="sr-only control-label mb-2" for="username">Username</label>
+                <div class="d-flex flex-row justify-content-center">
+                    <div class="form-group mx-sm-3 mb-2">
+                        <input type="text" class="form-control" id="username" placeholder="Username" autofocus />
+                    </div>
+                    <button type="submit" id="joinGame" class="btn btn-primary mb-2">Join Game</button>
+                </div>
+                <p id="usernameStatus" class="help-block">Please enter your desired username.</p>
+            </div>
         </div>
+
+        <p id="gameStatus" class="help-block my-3"></p>
+
         <table id="tableHidden" hidden>
             <tbody id="board">
             </tbody>
