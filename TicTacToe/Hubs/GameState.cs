@@ -119,15 +119,14 @@ namespace TicTacToe.Hubs
             return this.games.Values.FirstOrDefault(game => game.GameRoomName.Equals(roomName) && game.Player1 != null && game.Player2 == null) != null;
         }
 
-        public async Task<Game> CreateGame(Player firstPlayer, Player secondPlayer, IGroupManager groupManager, string roomName)
+        public async Task<Game> CreateGame(Player firstPlayer, IGroupManager groupManager, string roomName)
         {
-            Game game = new Game(firstPlayer, secondPlayer, roomName);
+            Game game = new Game(firstPlayer, roomName);
             this.games[game.GameRoomName] = game;
 
             if (groupManager != null)
             {
                 await groupManager.AddToGroupAsync(firstPlayer.Id, groupName: game.GameRoomName);
-                await groupManager.AddToGroupAsync(secondPlayer.Id, groupName: game.GameRoomName);
             }
 
             return game;

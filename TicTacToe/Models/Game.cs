@@ -16,10 +16,9 @@ namespace TicTacToe.Models
 		/// </summary>
 		/// <param name="player1">The first player to join the game.</param>
 		/// <param name="player2">The second player to join the game.</param>
-		public Game(Player player1, Player player2, string roomName)
+		public Game(Player player1, string roomName)
 		{
 			this.Player1 = player1;
-			this.Player2 = player2;
 			this.GameRoomName = roomName;
 			this.Board = new Board();
 
@@ -28,23 +27,42 @@ namespace TicTacToe.Models
 			// Link the players to the game as well
 			this.Player1.PlayingRoomName = this.GameRoomName;
             this.Player1.Piece = "X";
-
-            if (this.Player2 != null)
-			{
-				this.Player2.PlayingRoomName = this.GameRoomName;
-                this.Player2.Piece = "O";
-            }
 		}
 
-		///// <summary>
-		///// A unique identifier for this game.
-		///// </summary>
-		//public string Id { get; set; }
+        /// <summary>
+        /// Creates a new game object.
+        /// </summary>
+        /// <param name="player1">The first player to join the game.</param>
+        /// <param name="player2">The second player to join the game.</param>
+        public Game(Player player1, Player player2, string roomName)
+        {
+            this.Player1 = player1;
+            this.Player2 = player2;
+            this.GameRoomName = roomName;
+            this.Board = new Board();
 
-		/// <summary>
-		/// Game room name identifier.
-		/// </summary>
-		public string GameRoomName { get; set; }
+            this.isFirstPlayersTurn = true;
+
+            // Link the players to the game as well
+            this.Player1.PlayingRoomName = this.GameRoomName;
+            this.Player1.Piece = "X";
+
+            if (this.Player2 != null)
+            {
+                this.Player2.PlayingRoomName = this.GameRoomName;
+                this.Player2.Piece = "O";
+            }
+        }
+
+        ///// <summary>
+        ///// A unique identifier for this game.
+        ///// </summary>
+        //public string Id { get; set; }
+
+        /// <summary>
+        /// Game room name identifier.
+        /// </summary>
+        public string GameRoomName { get; set; }
 
 		/// <summary>
 		/// One of two partipants of the game.
