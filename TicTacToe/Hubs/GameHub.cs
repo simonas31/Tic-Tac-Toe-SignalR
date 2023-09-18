@@ -79,7 +79,7 @@ namespace TicTacToe.Hubs
 
             // An opponent was found so join a new game and start the game
             // Opponent is first player since they were waiting first
-            Game newGame = await GameState.Instance.CreateGame(joiningPlayer, null, this.Groups, roomName);//add parameter roomName
+            Game newGame = await GameState.Instance.CreateGame(joiningPlayer, this.Groups, roomName);//add parameter roomName
             await Groups.AddToGroupAsync(Context.ConnectionId, newGame.GameRoomName);//add parameter roomName
 			await Clients.Caller.SendAsync("startHost");
         }
