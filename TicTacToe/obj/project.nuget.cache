@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "SBNRGmAPc7YuOdtJ7bCmSe8/R5PypvaWYlRyi+dMIZH/CTDcdBLQGzSzHehR6UT6U+Y3UazDKhGU2UeknYzVlw==",
+  "dgSpecHash": "l+nsdLzhw0D38EfXPRcnS8zsX5JsnBYUPq6Z1oOYClFJS9Bsnx+b9mjoiN7VFpG1CY1y41H+MUkjlcS/R7RfuQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\babar\\Desktop\\UNI\\7 semestras\\Objektinis programu projektavimas(Design patterns)\\TicTacToe\\TicTacToe.csproj",
+  "projectFilePath": "C:\\Users\\babar\\Desktop\\UNI\\7 semestras\\Objektinis programu projektavimas(Design patterns)\\Tic-Tac-Toe-SignalR\\TicTacToe\\TicTacToe.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\babar\\.nuget\\packages\\microsoft.aspnet.signalr.core\\2.4.3\\microsoft.aspnet.signalr.core.2.4.3.nupkg.sha512",
     "C:\\Users\\babar\\.nuget\\packages\\microsoft.owin\\2.1.0\\microsoft.owin.2.1.0.nupkg.sha512",

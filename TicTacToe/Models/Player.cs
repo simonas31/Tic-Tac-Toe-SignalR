@@ -11,9 +11,10 @@ namespace TicTacToe.Models
 	/// </summary>
 	public class Player
 	{
-		public Player(string name, string id)
+		public Player(string name, string roomName, string id)
 		{
 			this.Name = name;
+			this.PlayingRoomName = roomName;
 			this.Id = id;
 		}
 
@@ -28,10 +29,10 @@ namespace TicTacToe.Models
 		public string Id { get; private set; }
 
 		/// <summary>
-		/// The unique ID to identify the game a player is playing; otherwise null.
+		/// The unique name to identify the game a player is playing; otherwise null.
 		/// The game will decide the game ID.
 		/// </summary>
-		public string GameId { get; set; }
+		public string PlayingRoomName { get; set; }
 
 		/// <summary>
 		/// Defines the piece that will be placed on the board to represent this user.
@@ -42,7 +43,7 @@ namespace TicTacToe.Models
 		public override string ToString()
 		{
 			return String.Format("(Id={0}, Name={1}, GameId={2}, Piece={3})",
-				this.Id, this.Name, this.GameId, this.Piece);
+				this.Id, this.Name, this.PlayingRoomName, this.Piece);
 		}
 
 		public override bool Equals(object obj)

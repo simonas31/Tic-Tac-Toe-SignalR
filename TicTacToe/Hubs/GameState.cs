@@ -1,11 +1,13 @@
 ﻿using Microsoft.AspNetCore.SignalR;
 using System.Collections.Concurrent;
+using System.ComponentModel;
 using TicTacToe.Models;
 
 namespace TicTacToe.Hubs
 {
     public class GameState
     {
+        // GameState Singleton
         private readonly static Lazy<GameState> instance =
             new Lazy<GameState>(() => new GameState());
 
@@ -27,9 +29,9 @@ namespace TicTacToe.Hubs
             get { return instance.Value; }
         }
 
-        public Player CreatePlayer(string username, string connectionId)
+        public Player CreatePlayer(string username, string roomName, string connectionId)
         {
-            var player = new Player(username, connectionId);
+            var player = new Player(username, roomName, connectionId);
             this.players[connectionId] = player;
 
             return player;
@@ -46,10 +48,22 @@ namespace TicTacToe.Hubs
             return foundPlayer;
         }
 
+        public Game GetGame(Player player, string roomName)
+        {
+            Game foundGame = games.Values.FirstOrDefault(g => g.GameRoomName == player.PlayingRoomName);
+
+            if (foundGame == null)
+            {
+                return null;
+            }
+
+            return foundGame;
+        }
+
         public Game GetGame(Player player, out Player opponent)
         {
             opponent = null;
-            Game foundGame = games.Values.FirstOrDefault(g => g.Id == player.GameId);
+            Game foundGame = games.Values.FirstOrDefault(g => g.GameRoomName == player.PlayingRoomName);
 
             if (foundGame == null)
             {
@@ -61,7 +75,7 @@ namespace TicTacToe.Hubs
             return foundGame;
         }
 
-        public Player GetWaitingOpponent()
+        public Player GetWaitingOpponent(string roomName)
         {
             Player foundPlayer;
             if (!this.waitingPlayers.TryDequeue(out foundPlayer))
@@ -95,15 +109,24 @@ namespace TicTacToe.Hubs
             return this.players.Values.FirstOrDefault(player => player.Name.Equals(username, StringComparison.InvariantCultureIgnoreCase)) != null;
         }
 
-        public async Task<Game> CreateGame(Player firstPlayer, Player secondPlayer, IGroupManager groupManager)
+        public bool IsRoomNameTaken(string roomName)
         {
-            Game game = new Game(firstPlayer, secondPlayer);
-            this.games[game.Id] = game;
+            return this.games.Values.FirstOrDefault(game => game.GameRoomName.Equals(roomName, StringComparison.InvariantCultureIgnoreCase)) != null;
+        }
+
+        public bool CanEnterRoom(string roomName)
+        {
+            return this.games.Values.FirstOrDefault(game => game.GameRoomName.Equals(roomName) && game.Player1 != null && game.Player2 == null) != null;
+        }
+
+        public async Task<Game> CreateGame(Player firstPlayer, IGroupManager groupManager, string roomName)
+        {
+            Game game = new Game(firstPlayer, roomName);
+            this.games[game.GameRoomName] = game;
 
             if (groupManager != null)
             {
-                await groupManager.AddToGroupAsync(firstPlayer.Id, groupName: game.Id);
-                await groupManager.AddToGroupAsync(secondPlayer.Id, groupName: game.Id);
+                await groupManager.AddToGroupAsync(firstPlayer.Id, groupName: game.GameRoomName);
             }
 
             return game;
