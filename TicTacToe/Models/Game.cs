@@ -10,13 +10,13 @@ namespace TicTacToe.Models
 	public class Game
 	{
 		private bool isFirstPlayersTurn;
-		
+
 		/// <summary>
 		/// Creates a new game object.
 		/// </summary>
 		/// <param name="player1">The first player to join the game.</param>
 		/// <param name="player2">The second player to join the game.</param>
-		public Game(Player player1, string roomName)
+		public Game(Player1Factory player1Factory, Player player1, string roomName)
 		{
 			this.Player1 = player1;
 			this.GameRoomName = roomName;
@@ -26,7 +26,7 @@ namespace TicTacToe.Models
 
 			// Link the players to the game as well
 			this.Player1.PlayingRoomName = this.GameRoomName;
-            this.Player1.Piece = "X";
+            this.Player1.Piece = player1Factory.CreatePiece(player1).ToString();
 		}
 
         /// <summary>
@@ -34,7 +34,7 @@ namespace TicTacToe.Models
         /// </summary>
         /// <param name="player1">The first player to join the game.</param>
         /// <param name="player2">The second player to join the game.</param>
-        public Game(Player player1, Player player2, string roomName)
+        public Game(GameFactory player1Factory, GameFactory player2Factory, Player player1, Player player2, string roomName)
         {
             this.Player1 = player1;
             this.Player2 = player2;
@@ -45,12 +45,12 @@ namespace TicTacToe.Models
 
             // Link the players to the game as well
             this.Player1.PlayingRoomName = this.GameRoomName;
-            this.Player1.Piece = "X";
+            this.Player1.Piece = player1Factory.CreatePiece(player1).ToString();
 
             if (this.Player2 != null)
             {
                 this.Player2.PlayingRoomName = this.GameRoomName;
-                this.Player2.Piece = "O";
+                this.Player2.Piece = player2Factory.CreatePiece(player1).ToString(); ;
             }
         }
 

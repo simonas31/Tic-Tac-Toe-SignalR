@@ -32,6 +32,7 @@ namespace TicTacToe.Hubs
 
             // Find any pending games if any
             Player opponent = GameState.Instance.GetWaitingOpponent(roomName);//add parameter roomName
+			Player2Factory factory = new Player2Factory();
             if (opponent == null)
 			{
 				// No waiting players so enter the waiting pool
@@ -48,7 +49,7 @@ namespace TicTacToe.Hubs
 				}
 				else
 				{
-					joiningPlayer.Piece = "O";
+					joiningPlayer.Piece = factory.CreatePiece(joiningPlayer).ToString();
 					joiningGame.Player2 = joiningPlayer;
                     await Groups.AddToGroupAsync(Context.ConnectionId, joiningGame.GameRoomName);//add parameter roomName
                     await Clients.Group(joiningGame.GameRoomName).SendAsync("startGame", JsonConvert.SerializeObject(joiningGame));
@@ -77,8 +78,8 @@ namespace TicTacToe.Hubs
             GameState.Instance.AddToWaitingPool(joiningPlayer);//add parameter roomName
             await Clients.Caller.SendAsync("waitingList");
 
-            // An opponent was found so join a new game and start the game
-            // Opponent is first player since they were waiting first
+			// An opponent was found so join a new game and start the game
+			// Opponent is first player since they were waiting first
             Game newGame = await GameState.Instance.CreateGame(joiningPlayer, this.Groups, roomName);//add parameter roomName
             await Groups.AddToGroupAsync(Context.ConnectionId, newGame.GameRoomName);//add parameter roomName
 			await Clients.Caller.SendAsync("startHost");

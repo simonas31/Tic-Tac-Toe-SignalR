@@ -170,28 +170,30 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\babar\\.nuget\\packages\\": {},
-    "C:\\Users\\babar\\AppData\\Roaming\\Godot\\mono\\GodotNuGetFallbackFolder": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\dabas\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
+    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\babar\\Desktop\\UNI\\7 semestras\\Objektinis programu projektavimas(Design patterns)\\Tic-Tac-Toe-SignalR\\TicTacToe\\TicTacToe.csproj",
+      "projectUniqueName": "C:\\Mokslai\\Git\\TicTacToe\\Tic-Tac-Toe-SignalR\\TicTacToe\\TicTacToe.csproj",
       "projectName": "TicTacToe",
-      "projectPath": "C:\\Users\\babar\\Desktop\\UNI\\7 semestras\\Objektinis programu projektavimas(Design patterns)\\Tic-Tac-Toe-SignalR\\TicTacToe\\TicTacToe.csproj",
-      "packagesPath": "C:\\Users\\babar\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\babar\\Desktop\\UNI\\7 semestras\\Objektinis programu projektavimas(Design patterns)\\Tic-Tac-Toe-SignalR\\TicTacToe\\obj\\",
+      "projectPath": "C:\\Mokslai\\Git\\TicTacToe\\Tic-Tac-Toe-SignalR\\TicTacToe\\TicTacToe.csproj",
+      "packagesPath": "C:\\Users\\dabas\\.nuget\\packages\\",
+      "outputPath": "C:\\Mokslai\\Git\\TicTacToe\\Tic-Tac-Toe-SignalR\\TicTacToe\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Users\\babar\\AppData\\Roaming\\Godot\\mono\\GodotNuGetFallbackFolder",
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\",
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\babar\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Users\\babar\\AppData\\Roaming\\NuGet\\config\\Godot.Offline.Config",
+        "C:\\Users\\dabas\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
