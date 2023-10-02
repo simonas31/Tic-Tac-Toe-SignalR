@@ -20,7 +20,7 @@ namespace TicTacToe.Models
 		{
 			this.Player1 = player1;
 			this.GameRoomName = roomName;
-			this.Board = new Board();
+			this.Board = BoardCreator.factoryMethod(3);
 
 			this.isFirstPlayersTurn = true;
 
@@ -39,7 +39,7 @@ namespace TicTacToe.Models
             this.Player1 = player1;
             this.Player2 = player2;
             this.GameRoomName = roomName;
-            this.Board = new Board();
+            this.Board = BoardCreator.factoryMethod(3);
 
             this.isFirstPlayersTurn = true;
 

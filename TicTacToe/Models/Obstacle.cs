@@ -1,12 +1,12 @@
 ﻿namespace TicTacToe.Models
 {
-    public class Obstacle
+    public class Obstacle : Cell
     {
         public string Value { get; }
 
-        public Obstacle(string value)
+        public Obstacle(string value) : base(value)
         {
-            Value = value;
+            Set(value);
         }
 
         public override string ToString()

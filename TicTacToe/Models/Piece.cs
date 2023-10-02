@@ -1,12 +1,11 @@
 ﻿namespace TicTacToe.Models
 {
-    public class Piece
+    public class Piece : Cell
     {
-        public string Value { get; }
 
-        public Piece(string value)
+        public Piece(string value) : base(value)
         {
-            Value = value;
+            Set(value);
         }
 
         public override string ToString()

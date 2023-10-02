@@ -22,7 +22,10 @@
 		/// </summary>
 		public string[,] Pieces { get; private set; }
 
-
+		public void Set(int n)
+		{
+			this.Pieces = new string[n, n];
+		}
 		/// <summary>
 		/// Determines whether there are three pieces in a row that match.
 		/// Possible configurations are either horizontal, vertical, or the diagonals.
