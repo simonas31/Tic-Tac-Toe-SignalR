@@ -142,10 +142,15 @@ namespace TicTacToe.Models
 		public bool IsValidMove(int row, int col)
 		{
 			// TODO: Make the board dimensions public properties
+			bool cond1 = row < this.Board.Pieces.GetLength(0);
+			bool cond2 = row < this.Board.Pieces.GetLength(1);
+			bool cond3 = string.IsNullOrWhiteSpace(this.Board.Pieces[row, col].Value);
+
+
 			return
-				row < this.Board.Pieces.GetLength(0) &&
-				col < this.Board.Pieces.GetLength(1) &&
-				string.IsNullOrWhiteSpace(this.Board.Pieces[row, col]);
+				cond1 &&
+				cond2 &&
+				cond3;
 		}
 
 		public override string ToString()

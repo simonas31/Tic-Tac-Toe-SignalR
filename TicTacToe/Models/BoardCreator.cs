@@ -3,6 +3,11 @@ namespace TicTacToe.Models;
 
 public class BoardCreator{
 
+    /// <summary>
+    /// create specific board
+    /// </summary>
+    /// <param name="type">dimensions for the board</param>
+    /// <returns></returns>
     public static Board factoryMethod(int type)
     {
         if(type == 3)
@@ -15,7 +20,7 @@ public class BoardCreator{
         }
         else
         {
-            return null;
+            return null; // wanted type is not implemented
         }
     }
 }
