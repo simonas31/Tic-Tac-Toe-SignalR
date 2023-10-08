@@ -1,25 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\babar\\Desktop\\UNI\\7 semestras\\Objektinis programu projektavimas(Design patterns)\\Tic-Tac-Toe-SignalR\\TicTacToe\\TicTacToe.csproj": {}
+    "c:\\Users\\Admin\\Desktop\\ND\\4 kursas 1 semestras\\Objektinis programų projektavimas\\Tic-Tac-Toe-SignalR\\TicTacToe\\TicTacToe.csproj": {}
   },
   "projects": {
-    "C:\\Users\\babar\\Desktop\\UNI\\7 semestras\\Objektinis programu projektavimas(Design patterns)\\Tic-Tac-Toe-SignalR\\TicTacToe\\TicTacToe.csproj": {
+    "c:\\Users\\Admin\\Desktop\\ND\\4 kursas 1 semestras\\Objektinis programų projektavimas\\Tic-Tac-Toe-SignalR\\TicTacToe\\TicTacToe.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\babar\\Desktop\\UNI\\7 semestras\\Objektinis programu projektavimas(Design patterns)\\Tic-Tac-Toe-SignalR\\TicTacToe\\TicTacToe.csproj",
+        "projectUniqueName": "c:\\Users\\Admin\\Desktop\\ND\\4 kursas 1 semestras\\Objektinis programų projektavimas\\Tic-Tac-Toe-SignalR\\TicTacToe\\TicTacToe.csproj",
         "projectName": "TicTacToe",
-        "projectPath": "C:\\Users\\babar\\Desktop\\UNI\\7 semestras\\Objektinis programu projektavimas(Design patterns)\\Tic-Tac-Toe-SignalR\\TicTacToe\\TicTacToe.csproj",
-        "packagesPath": "C:\\Users\\babar\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\babar\\Desktop\\UNI\\7 semestras\\Objektinis programu projektavimas(Design patterns)\\Tic-Tac-Toe-SignalR\\TicTacToe\\obj\\",
+        "projectPath": "c:\\Users\\Admin\\Desktop\\ND\\4 kursas 1 semestras\\Objektinis programų projektavimas\\Tic-Tac-Toe-SignalR\\TicTacToe\\TicTacToe.csproj",
+        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+        "outputPath": "c:\\Users\\Admin\\Desktop\\ND\\4 kursas 1 semestras\\Objektinis programų projektavimas\\Tic-Tac-Toe-SignalR\\TicTacToe\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Users\\babar\\AppData\\Roaming\\Godot\\mono\\GodotNuGetFallbackFolder",
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\babar\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Users\\babar\\AppData\\Roaming\\NuGet\\config\\Godot.Offline.Config",
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -28,6 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {

@@ -74,3 +74,79 @@ C:\Users\babar\Desktop\UNI\7 semestras\Objektinis programu projektavimas(Design 
 C:\Users\babar\Desktop\UNI\7 semestras\Objektinis programu projektavimas(Design patterns)\Tic-Tac-Toe-SignalR\TicTacToe\obj\Debug\net7.0\TicTacToe.pdb
 C:\Users\babar\Desktop\UNI\7 semestras\Objektinis programu projektavimas(Design patterns)\Tic-Tac-Toe-SignalR\TicTacToe\obj\Debug\net7.0\TicTacToe.genruntimeconfig.cache
 C:\Users\babar\Desktop\UNI\7 semestras\Objektinis programu projektavimas(Design patterns)\Tic-Tac-Toe-SignalR\TicTacToe\obj\Debug\net7.0\ref\TicTacToe.dll
+C:\Mokslai\Git\TicTacToe\Tic-Tac-Toe-SignalR\TicTacToe\bin\Debug\net7.0\appsettings.Development.json
+C:\Mokslai\Git\TicTacToe\Tic-Tac-Toe-SignalR\TicTacToe\bin\Debug\net7.0\appsettings.json
+C:\Mokslai\Git\TicTacToe\Tic-Tac-Toe-SignalR\TicTacToe\bin\Debug\net7.0\libman.json
+C:\Mokslai\Git\TicTacToe\Tic-Tac-Toe-SignalR\TicTacToe\bin\Debug\net7.0\TicTacToe.staticwebassets.runtime.json
+C:\Mokslai\Git\TicTacToe\Tic-Tac-Toe-SignalR\TicTacToe\bin\Debug\net7.0\TicTacToe.exe
+C:\Mokslai\Git\TicTacToe\Tic-Tac-Toe-SignalR\TicTacToe\bin\Debug\net7.0\TicTacToe.deps.json
+C:\Mokslai\Git\TicTacToe\Tic-Tac-Toe-SignalR\TicTacToe\bin\Debug\net7.0\TicTacToe.runtimeconfig.json
+C:\Mokslai\Git\TicTacToe\Tic-Tac-Toe-SignalR\TicTacToe\bin\Debug\net7.0\TicTacToe.dll
+C:\Mokslai\Git\TicTacToe\Tic-Tac-Toe-SignalR\TicTacToe\bin\Debug\net7.0\TicTacToe.pdb
+C:\Mokslai\Git\TicTacToe\Tic-Tac-Toe-SignalR\TicTacToe\bin\Debug\net7.0\Microsoft.AspNet.SignalR.Core.dll
+C:\Mokslai\Git\TicTacToe\Tic-Tac-Toe-SignalR\TicTacToe\bin\Debug\net7.0\Microsoft.Owin.dll
+C:\Mokslai\Git\TicTacToe\Tic-Tac-Toe-SignalR\TicTacToe\bin\Debug\net7.0\Microsoft.Owin.Security.dll
+C:\Mokslai\Git\TicTacToe\Tic-Tac-Toe-SignalR\TicTacToe\bin\Debug\net7.0\Newtonsoft.Json.dll
+C:\Mokslai\Git\TicTacToe\Tic-Tac-Toe-SignalR\TicTacToe\bin\Debug\net7.0\Owin.dll
+C:\Mokslai\Git\TicTacToe\Tic-Tac-Toe-SignalR\TicTacToe\obj\Debug\net7.0\TicTacToe.csproj.AssemblyReference.cache
+C:\Mokslai\Git\TicTacToe\Tic-Tac-Toe-SignalR\TicTacToe\obj\Debug\net7.0\TicTacToe.GeneratedMSBuildEditorConfig.editorconfig
+C:\Mokslai\Git\TicTacToe\Tic-Tac-Toe-SignalR\TicTacToe\obj\Debug\net7.0\TicTacToe.AssemblyInfoInputs.cache
+C:\Mokslai\Git\TicTacToe\Tic-Tac-Toe-SignalR\TicTacToe\obj\Debug\net7.0\TicTacToe.AssemblyInfo.cs
+C:\Mokslai\Git\TicTacToe\Tic-Tac-Toe-SignalR\TicTacToe\obj\Debug\net7.0\TicTacToe.csproj.CoreCompileInputs.cache
+C:\Mokslai\Git\TicTacToe\Tic-Tac-Toe-SignalR\TicTacToe\obj\Debug\net7.0\TicTacToe.MvcApplicationPartsAssemblyInfo.cache
+C:\Mokslai\Git\TicTacToe\Tic-Tac-Toe-SignalR\TicTacToe\obj\Debug\net7.0\TicTacToe.RazorAssemblyInfo.cache
+C:\Mokslai\Git\TicTacToe\Tic-Tac-Toe-SignalR\TicTacToe\obj\Debug\net7.0\TicTacToe.RazorAssemblyInfo.cs
+C:\Mokslai\Git\TicTacToe\Tic-Tac-Toe-SignalR\TicTacToe\obj\Debug\net7.0\staticwebassets\msbuild.TicTacToe.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Mokslai\Git\TicTacToe\Tic-Tac-Toe-SignalR\TicTacToe\obj\Debug\net7.0\staticwebassets\msbuild.build.TicTacToe.props
+C:\Mokslai\Git\TicTacToe\Tic-Tac-Toe-SignalR\TicTacToe\obj\Debug\net7.0\staticwebassets\msbuild.buildMultiTargeting.TicTacToe.props
+C:\Mokslai\Git\TicTacToe\Tic-Tac-Toe-SignalR\TicTacToe\obj\Debug\net7.0\staticwebassets\msbuild.buildTransitive.TicTacToe.props
+C:\Mokslai\Git\TicTacToe\Tic-Tac-Toe-SignalR\TicTacToe\obj\Debug\net7.0\staticwebassets.pack.json
+C:\Mokslai\Git\TicTacToe\Tic-Tac-Toe-SignalR\TicTacToe\obj\Debug\net7.0\staticwebassets.build.json
+C:\Mokslai\Git\TicTacToe\Tic-Tac-Toe-SignalR\TicTacToe\obj\Debug\net7.0\staticwebassets.development.json
+C:\Mokslai\Git\TicTacToe\Tic-Tac-Toe-SignalR\TicTacToe\obj\Debug\net7.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
+C:\Mokslai\Git\TicTacToe\Tic-Tac-Toe-SignalR\TicTacToe\obj\Debug\net7.0\scopedcss\bundle\TicTacToe.styles.css
+C:\Mokslai\Git\TicTacToe\Tic-Tac-Toe-SignalR\TicTacToe\obj\Debug\net7.0\scopedcss\projectbundle\TicTacToe.bundle.scp.css
+C:\Mokslai\Git\TicTacToe\Tic-Tac-Toe-SignalR\TicTacToe\obj\Debug\net7.0\TicTacToe.csproj.CopyComplete
+C:\Mokslai\Git\TicTacToe\Tic-Tac-Toe-SignalR\TicTacToe\obj\Debug\net7.0\TicTacToe.dll
+C:\Mokslai\Git\TicTacToe\Tic-Tac-Toe-SignalR\TicTacToe\obj\Debug\net7.0\refint\TicTacToe.dll
+C:\Mokslai\Git\TicTacToe\Tic-Tac-Toe-SignalR\TicTacToe\obj\Debug\net7.0\TicTacToe.pdb
+C:\Mokslai\Git\TicTacToe\Tic-Tac-Toe-SignalR\TicTacToe\obj\Debug\net7.0\TicTacToe.genruntimeconfig.cache
+C:\Mokslai\Git\TicTacToe\Tic-Tac-Toe-SignalR\TicTacToe\obj\Debug\net7.0\ref\TicTacToe.dll
+c:\Users\Admin\Desktop\ND\4 kursas 1 semestras\Objektinis programų projektavimas\Tic-Tac-Toe-SignalR\TicTacToe\bin\Debug\net7.0\appsettings.Development.json
+c:\Users\Admin\Desktop\ND\4 kursas 1 semestras\Objektinis programų projektavimas\Tic-Tac-Toe-SignalR\TicTacToe\bin\Debug\net7.0\appsettings.json
+c:\Users\Admin\Desktop\ND\4 kursas 1 semestras\Objektinis programų projektavimas\Tic-Tac-Toe-SignalR\TicTacToe\bin\Debug\net7.0\libman.json
+c:\Users\Admin\Desktop\ND\4 kursas 1 semestras\Objektinis programų projektavimas\Tic-Tac-Toe-SignalR\TicTacToe\bin\Debug\net7.0\TicTacToe.staticwebassets.runtime.json
+c:\Users\Admin\Desktop\ND\4 kursas 1 semestras\Objektinis programų projektavimas\Tic-Tac-Toe-SignalR\TicTacToe\bin\Debug\net7.0\TicTacToe.exe
+c:\Users\Admin\Desktop\ND\4 kursas 1 semestras\Objektinis programų projektavimas\Tic-Tac-Toe-SignalR\TicTacToe\bin\Debug\net7.0\TicTacToe.deps.json
+c:\Users\Admin\Desktop\ND\4 kursas 1 semestras\Objektinis programų projektavimas\Tic-Tac-Toe-SignalR\TicTacToe\bin\Debug\net7.0\TicTacToe.runtimeconfig.json
+c:\Users\Admin\Desktop\ND\4 kursas 1 semestras\Objektinis programų projektavimas\Tic-Tac-Toe-SignalR\TicTacToe\bin\Debug\net7.0\TicTacToe.dll
+c:\Users\Admin\Desktop\ND\4 kursas 1 semestras\Objektinis programų projektavimas\Tic-Tac-Toe-SignalR\TicTacToe\bin\Debug\net7.0\TicTacToe.pdb
+c:\Users\Admin\Desktop\ND\4 kursas 1 semestras\Objektinis programų projektavimas\Tic-Tac-Toe-SignalR\TicTacToe\bin\Debug\net7.0\Microsoft.AspNet.SignalR.Core.dll
+c:\Users\Admin\Desktop\ND\4 kursas 1 semestras\Objektinis programų projektavimas\Tic-Tac-Toe-SignalR\TicTacToe\bin\Debug\net7.0\Microsoft.Owin.dll
+c:\Users\Admin\Desktop\ND\4 kursas 1 semestras\Objektinis programų projektavimas\Tic-Tac-Toe-SignalR\TicTacToe\bin\Debug\net7.0\Microsoft.Owin.Security.dll
+c:\Users\Admin\Desktop\ND\4 kursas 1 semestras\Objektinis programų projektavimas\Tic-Tac-Toe-SignalR\TicTacToe\bin\Debug\net7.0\Newtonsoft.Json.dll
+c:\Users\Admin\Desktop\ND\4 kursas 1 semestras\Objektinis programų projektavimas\Tic-Tac-Toe-SignalR\TicTacToe\bin\Debug\net7.0\Owin.dll
+c:\Users\Admin\Desktop\ND\4 kursas 1 semestras\Objektinis programų projektavimas\Tic-Tac-Toe-SignalR\TicTacToe\obj\Debug\net7.0\TicTacToe.csproj.AssemblyReference.cache
+c:\Users\Admin\Desktop\ND\4 kursas 1 semestras\Objektinis programų projektavimas\Tic-Tac-Toe-SignalR\TicTacToe\obj\Debug\net7.0\TicTacToe.GeneratedMSBuildEditorConfig.editorconfig
+c:\Users\Admin\Desktop\ND\4 kursas 1 semestras\Objektinis programų projektavimas\Tic-Tac-Toe-SignalR\TicTacToe\obj\Debug\net7.0\TicTacToe.AssemblyInfoInputs.cache
+c:\Users\Admin\Desktop\ND\4 kursas 1 semestras\Objektinis programų projektavimas\Tic-Tac-Toe-SignalR\TicTacToe\obj\Debug\net7.0\TicTacToe.AssemblyInfo.cs
+c:\Users\Admin\Desktop\ND\4 kursas 1 semestras\Objektinis programų projektavimas\Tic-Tac-Toe-SignalR\TicTacToe\obj\Debug\net7.0\TicTacToe.csproj.CoreCompileInputs.cache
+c:\Users\Admin\Desktop\ND\4 kursas 1 semestras\Objektinis programų projektavimas\Tic-Tac-Toe-SignalR\TicTacToe\obj\Debug\net7.0\TicTacToe.MvcApplicationPartsAssemblyInfo.cache
+c:\Users\Admin\Desktop\ND\4 kursas 1 semestras\Objektinis programų projektavimas\Tic-Tac-Toe-SignalR\TicTacToe\obj\Debug\net7.0\TicTacToe.RazorAssemblyInfo.cache
+c:\Users\Admin\Desktop\ND\4 kursas 1 semestras\Objektinis programų projektavimas\Tic-Tac-Toe-SignalR\TicTacToe\obj\Debug\net7.0\TicTacToe.RazorAssemblyInfo.cs
+c:\Users\Admin\Desktop\ND\4 kursas 1 semestras\Objektinis programų projektavimas\Tic-Tac-Toe-SignalR\TicTacToe\obj\Debug\net7.0\staticwebassets\msbuild.TicTacToe.Microsoft.AspNetCore.StaticWebAssets.props
+c:\Users\Admin\Desktop\ND\4 kursas 1 semestras\Objektinis programų projektavimas\Tic-Tac-Toe-SignalR\TicTacToe\obj\Debug\net7.0\staticwebassets\msbuild.build.TicTacToe.props
+c:\Users\Admin\Desktop\ND\4 kursas 1 semestras\Objektinis programų projektavimas\Tic-Tac-Toe-SignalR\TicTacToe\obj\Debug\net7.0\staticwebassets\msbuild.buildMultiTargeting.TicTacToe.props
+c:\Users\Admin\Desktop\ND\4 kursas 1 semestras\Objektinis programų projektavimas\Tic-Tac-Toe-SignalR\TicTacToe\obj\Debug\net7.0\staticwebassets\msbuild.buildTransitive.TicTacToe.props
+c:\Users\Admin\Desktop\ND\4 kursas 1 semestras\Objektinis programų projektavimas\Tic-Tac-Toe-SignalR\TicTacToe\obj\Debug\net7.0\staticwebassets.pack.json
+c:\Users\Admin\Desktop\ND\4 kursas 1 semestras\Objektinis programų projektavimas\Tic-Tac-Toe-SignalR\TicTacToe\obj\Debug\net7.0\staticwebassets.build.json
+c:\Users\Admin\Desktop\ND\4 kursas 1 semestras\Objektinis programų projektavimas\Tic-Tac-Toe-SignalR\TicTacToe\obj\Debug\net7.0\staticwebassets.development.json
+c:\Users\Admin\Desktop\ND\4 kursas 1 semestras\Objektinis programų projektavimas\Tic-Tac-Toe-SignalR\TicTacToe\obj\Debug\net7.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
+c:\Users\Admin\Desktop\ND\4 kursas 1 semestras\Objektinis programų projektavimas\Tic-Tac-Toe-SignalR\TicTacToe\obj\Debug\net7.0\scopedcss\bundle\TicTacToe.styles.css
+c:\Users\Admin\Desktop\ND\4 kursas 1 semestras\Objektinis programų projektavimas\Tic-Tac-Toe-SignalR\TicTacToe\obj\Debug\net7.0\scopedcss\projectbundle\TicTacToe.bundle.scp.css
+c:\Users\Admin\Desktop\ND\4 kursas 1 semestras\Objektinis programų projektavimas\Tic-Tac-Toe-SignalR\TicTacToe\obj\Debug\net7.0\TicTacToe.csproj.CopyComplete
+c:\Users\Admin\Desktop\ND\4 kursas 1 semestras\Objektinis programų projektavimas\Tic-Tac-Toe-SignalR\TicTacToe\obj\Debug\net7.0\TicTacToe.dll
+c:\Users\Admin\Desktop\ND\4 kursas 1 semestras\Objektinis programų projektavimas\Tic-Tac-Toe-SignalR\TicTacToe\obj\Debug\net7.0\refint\TicTacToe.dll
+c:\Users\Admin\Desktop\ND\4 kursas 1 semestras\Objektinis programų projektavimas\Tic-Tac-Toe-SignalR\TicTacToe\obj\Debug\net7.0\TicTacToe.pdb
+c:\Users\Admin\Desktop\ND\4 kursas 1 semestras\Objektinis programų projektavimas\Tic-Tac-Toe-SignalR\TicTacToe\obj\Debug\net7.0\TicTacToe.genruntimeconfig.cache
+c:\Users\Admin\Desktop\ND\4 kursas 1 semestras\Objektinis programų projektavimas\Tic-Tac-Toe-SignalR\TicTacToe\obj\Debug\net7.0\ref\TicTacToe.dll
