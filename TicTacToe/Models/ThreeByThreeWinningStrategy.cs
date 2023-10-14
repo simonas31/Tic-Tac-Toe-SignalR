@@ -4,42 +4,42 @@ namespace TicTacToe.Models
 {
     public class ThreeByThreeWinningStrategy : IWinningStrategy
     {
-        public bool IsThreeInRow(Cell[,] pieces)
+        public bool IsThreeInRow(Cell[,] Pieces)
         {
             // Check all rows
-            for (int row = 0; row < pieces.GetLength(0); row++)
+            for (int row = 0; row < Pieces.GetLength(0); row++)
             {
-                if (pieces[row, 0] != null && !string.IsNullOrWhiteSpace(pieces[row, 0].Value) &&
-                    pieces[row, 0].Value == pieces[row, 1].Value &&
-                    pieces[row, 1].Value == pieces[row, 2].Value)
+                if (Pieces[row, 0] != null && !string.IsNullOrWhiteSpace(Pieces[row, 0].Value) &&
+                    Pieces[row, 0].Value == Pieces[row, 1].Value &&
+                    Pieces[row, 1].Value == Pieces[row, 2].Value)
                 {
                     return true;
                 }
             }
 
             // Check all columns
-            for (int col = 0; col < pieces.GetLength(1); col++)
+            for (int col = 0; col < Pieces.GetLength(1); col++)
             {
-                if (pieces[0, col] != null && !string.IsNullOrWhiteSpace(pieces[0, col].Value) &&
-                    pieces[0, col].Value == pieces[1, col].Value &&
-                    pieces[1, col].Value == pieces[2, col].Value)
+                if (Pieces[0, col] != null && !string.IsNullOrWhiteSpace(Pieces[0, col].Value) &&
+                    Pieces[0, col].Value == Pieces[1, col].Value &&
+                    Pieces[1, col].Value == Pieces[2, col].Value)
                 {
                     return true;
                 }
             }
 
             // Check forward-diagonal
-            if (pieces[1, 1] != null && !string.IsNullOrWhiteSpace(pieces[1, 1].Value) &&
-                pieces[2, 0].Value == pieces[1, 1].Value &&
-                pieces[1, 1].Value == pieces[0, 2].Value)
+            if (Pieces[1, 1] != null && !string.IsNullOrWhiteSpace(Pieces[1, 1].Value) &&
+                Pieces[2, 0].Value == Pieces[1, 1].Value &&
+                Pieces[1, 1].Value == Pieces[0, 2].Value)
             {
                 return true;
             }
 
             // Check backward-diagonal
-            if (pieces[1, 1] != null && !string.IsNullOrWhiteSpace(pieces[1, 1].Value) &&
-                pieces[0, 0].Value == pieces[1, 1].Value &&
-                pieces[1, 1].Value == pieces[2, 2].Value)
+            if (Pieces[1, 1] != null && !string.IsNullOrWhiteSpace(Pieces[1, 1].Value) &&
+                Pieces[0, 0].Value == Pieces[1, 1].Value &&
+                Pieces[1, 1].Value == Pieces[2, 2].Value)
             {
                 return true;
             }
@@ -47,13 +47,13 @@ namespace TicTacToe.Models
             return false;
         }
 
-        public bool IsBoardFull(Cell[,] pieces)
+        public bool IsBoardFull(Cell[,] Pieces)
         {
-            for (int row = 0; row < pieces.GetLength(0); row++)
+            for (int row = 0; row < Pieces.GetLength(0); row++)
             {
-                for (int col = 0; col < pieces.GetLength(1); col++)
+                for (int col = 0; col < Pieces.GetLength(1); col++)
                 {
-                    if (pieces[row, col] == null || string.IsNullOrWhiteSpace(pieces[row, col].Value))
+                    if (Pieces[row, col] == null || string.IsNullOrWhiteSpace(Pieces[row, col].Value))
                     {
                         return false;
                     }
@@ -62,14 +62,15 @@ namespace TicTacToe.Models
             return true;
         }
 
-        public bool IsGameOver(Cell[,] pieces)
+        public bool IsGameOver(Cell[,] Pieces)
         {
-            return IsThreeInRow(pieces) || IsBoardFull(pieces);
+            return IsThreeInRow(Pieces) || IsBoardFull(Pieces);
         }
-        public bool IsFourInRow(Cell[,] pieces)
+        public bool IsFourInRow(Cell[,] Pieces)
         {
             // Implement a method that always returns false for a 3x3 board.
             return false;
         }
     }
 }
+
