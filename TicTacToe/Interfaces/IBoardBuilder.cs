@@ -1,4 +1,6 @@
-﻿namespace TicTacToe.Models
+﻿using TicTacToe.GameObjects;
+
+namespace TicTacToe.Interfaces
 {
     public interface IBoardBuilder
     {

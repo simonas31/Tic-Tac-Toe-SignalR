@@ -1,7 +1,10 @@
+using TicTacToe.GameObjects;
+
 namespace TicTacToe.Models;
 
 
-public class BoardCreator{
+public class BoardCreator
+{
 
     /// <summary>
     /// create specific board

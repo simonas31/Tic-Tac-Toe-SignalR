@@ -1,4 +1,6 @@
-namespace TicTacToe.Models
+using TicTacToe.Models;
+
+namespace TicTacToe.GameObjects
 {
     public class Board4 : Board
     {

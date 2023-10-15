@@ -1,4 +1,6 @@
-﻿namespace TicTacToe.Models
+﻿using TicTacToe.GameObjects;
+
+namespace TicTacToe.Models
 {
     public class Player1Factory : GameFactory
     {

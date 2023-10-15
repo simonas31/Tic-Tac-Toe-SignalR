@@ -1,8 +1,10 @@
-namespace TicTacToe.Models
+using TicTacToe.Patterns.Prototype;
+
+namespace TicTacToe.GameObjects
 {
-    public class Cell
+    public class Cell : CellPrototype
     {
-        public string Value { get; private set;}
+        public string Value { get; private set; }
 
         /// <summary>
         /// constructor
@@ -35,7 +37,8 @@ namespace TicTacToe.Models
         /// get status if cell is itself or it's child classes
         /// </summary>
         /// <returns>status that it's Cell class</returns>
-        public string getStatus(){
+        public string getStatus()
+        {
             return "general";
         }
 
@@ -46,6 +49,11 @@ namespace TicTacToe.Models
         public override string ToString()
         {
             return Value;
+        }
+
+        public override Cell Clone()
+        {
+            return (Cell)this.MemberwiseClone();
         }
     }
 }
