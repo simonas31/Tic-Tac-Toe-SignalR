@@ -13,18 +13,32 @@
 		public Board()
 		{
 			// TODO: Make the dimensions of the board constants
-			this.Pieces = new string[3, 3];
+			this.Pieces = new Cell[3, 3];
+			for (int i = 0; i < 3; i++)
+			{
+				for (int j = 0; j < 3; j++)
+				{
+					Pieces[i, j] = new Cell();
+				}
+			}
 		}
 
 		/// <summary>
 		/// Represents the pieces on the board.
 		/// Must be publicly accessible to allow serialization.
 		/// </summary>
-		public string[,] Pieces { get; private set; }
+		public Cell[,] Pieces { get; private set; }
 
-		public void Set(int n)
+		protected void Set(int n)
 		{
-			this.Pieces = new string[n, n];
+			this.Pieces = new Cell[n, n];
+			for (int i = 0; i < n; i++)
+			{
+				for (int j = 0; j < n; j++)
+				{
+					Pieces[i, j] = new Cell();
+				}
+			}
 		}
 		/// <summary>
 		/// Determines whether there are three pieces in a row that match.
@@ -37,9 +51,9 @@
 				// Check all rows
 				for (int row = 0; row < this.Pieces.GetLength(0); row++)
 				{
-					if (!string.IsNullOrWhiteSpace(Pieces[row, 0]) &&
-						Pieces[row, 0] == Pieces[row, 1] &&
-						Pieces[row, 1] == Pieces[row, 2])
+					if (Pieces[row, 0] != null && !string.IsNullOrWhiteSpace(Pieces[row, 0].Value) &&
+						Pieces[row, 0].Value == Pieces[row, 1].Value &&
+						Pieces[row, 1].Value == Pieces[row, 2].Value)
 					{
 						return true;
 					}
@@ -48,26 +62,26 @@
 				// Check all columns
 				for (int col = 0; col < this.Pieces.GetLength(1); col++)
 				{
-					if (!string.IsNullOrWhiteSpace(Pieces[0, col]) &&
-						Pieces[0, col] == Pieces[1, col] &&
-						Pieces[1, col] == Pieces[2, col])
+					if (Pieces[0, col] != null && !string.IsNullOrWhiteSpace(Pieces[0, col].Value) &&
+						Pieces[0, col].Value == Pieces[1, col].Value &&
+						Pieces[1, col].Value == Pieces[2, col].Value)
 					{
 						return true;
 					}
 				}
 
 				// Check forward-diagonal
-				if (!string.IsNullOrWhiteSpace(Pieces[1, 1]) &&
-					Pieces[2, 0] == Pieces[1, 1] &&
-					Pieces[1, 1] == Pieces[0, 2])
+				if (Pieces[1, 1] != null && !string.IsNullOrWhiteSpace(Pieces[1, 1].Value) &&
+					Pieces[2, 0].Value == Pieces[1, 1].Value &&
+					Pieces[1, 1].Value == Pieces[0, 2].Value)
 				{
 					return true;
 				}
 
 				// Check backward-diagonal
-				if (!string.IsNullOrWhiteSpace(Pieces[1, 1]) &&
-					Pieces[0, 0] == Pieces[1, 1] &&
-					Pieces[1, 1] == Pieces[2, 2])
+				if (Pieces[1, 1] != null && !string.IsNullOrWhiteSpace(Pieces[1, 1].Value) &&
+					Pieces[0, 0].Value == Pieces[1, 1].Value &&
+					Pieces[1, 1].Value == Pieces[2, 2].Value)
 				{
 					return true;
 				}
@@ -83,29 +97,66 @@
 		{
 			get
 			{
-				return this.totalPiecesPlaced < this.Pieces.Length;
+				return this.totalPiecesPlaced < Pieces.GetLength(0) * Pieces.GetLength(0);
 			}
 		}
 
+		/// <summary>
+		/// update a cell with wanted value
+		/// </summary>
+		/// <param name="row">cordinate 1</param>
+		/// <param name="col">cordinate 2</param>
+		/// <param name="pieceToPlace">value to be placed</param>
 		public void PlacePiece(int row, int col, string pieceToPlace)
 		{
-			this.Pieces[row, col] = pieceToPlace;
+			this.Pieces[row, col].Set(pieceToPlace);
 			this.totalPiecesPlaced++;
 		}
 
+		/// <summary>
+		/// get all Cell values as a single string
+		/// </summary>
+		/// <returns>Cell values as a single string</returns>
 		public override string ToString()
 		{
-            List<string> piecesList = new List<string>();
+			List<string> piecesList = new List<string>();
 
-            for (int i = 0; i < Pieces.GetLength(0); i++)
+			for (int i = 0; i < Pieces.GetLength(0); i++)
+			{
+				for (int j = 0; j < Pieces.GetLength(1); j++)
+				{
+					piecesList.Add(Pieces[i, j].Value);
+				}
+			}
+
+			return string.Join(", ", piecesList);
+		}
+        public class BoardBuilder : IBoardBuilder
+        {
+            private Board board;
+
+            public BoardBuilder()
             {
-                for (int j = 0; j < Pieces.GetLength(1); j++)
-                {
-                    piecesList.Add(Pieces[i, j]);
-                }
+                board = new Board();
             }
 
-            return string.Join(", ", piecesList);
+            public IBoardBuilder SetDimensions(int dimensions)
+            {
+                board.Set(dimensions);
+                return this;
+            }
+
+            public IBoardBuilder WithCustomConfigurations()
+            {
+                // Add any custom configurations here
+                return this;
+            }
+
+            public Board Build()
+            {
+                return board;
+            }
         }
-	}
+
+    }
 }

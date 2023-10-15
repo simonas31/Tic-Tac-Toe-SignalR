@@ -12,5 +12,10 @@
         {
             return Value;
         }
+
+        public string getStatus()
+        {
+            return "piece";
+        }
     }
 }

@@ -1,14 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "LrTBpy9DBA88rQQ1/1qsWDRVkt+oJ4ywfzRcbTGvn7cibl3f5lVoFZSVoLHckbBD8rw40r6sV6mb3tlSBV+AYA==",
+  "dgSpecHash": "jjUs4aRQy4PQ857QKKOA8KZUku6rtqWCriXSBYHvZcqraBT2n6xY3FOfOw/t/rcsSUBWgNezrO0WMzgh8xpQqw==",
   "success": true,
-  "projectFilePath": "c:\\Users\\Admin\\Desktop\\ND\\4 kursas 1 semestras\\Objektinis programų projektavimas\\Tic-Tac-Toe-SignalR\\TicTacToe\\TicTacToe.csproj",
+  "projectFilePath": "C:\\Users\\Gabija\\source\\repos\\Tic-Tac-Toe-SignalR\\TicTacToe\\TicTacToe.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Admin\\.nuget\\packages\\microsoft.aspnet.signalr.core\\2.4.3\\microsoft.aspnet.signalr.core.2.4.3.nupkg.sha512",
-    "C:\\Users\\Admin\\.nuget\\packages\\microsoft.owin\\2.1.0\\microsoft.owin.2.1.0.nupkg.sha512",
-    "C:\\Users\\Admin\\.nuget\\packages\\microsoft.owin.security\\2.1.0\\microsoft.owin.security.2.1.0.nupkg.sha512",
-    "C:\\Users\\Admin\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
-    "C:\\Users\\Admin\\.nuget\\packages\\owin\\1.0.0\\owin.1.0.0.nupkg.sha512"
+    "C:\\Users\\Gabija\\.nuget\\packages\\microsoft.aspnet.signalr.core\\2.4.3\\microsoft.aspnet.signalr.core.2.4.3.nupkg.sha512",
+    "C:\\Users\\Gabija\\.nuget\\packages\\microsoft.owin\\2.1.0\\microsoft.owin.2.1.0.nupkg.sha512",
+    "C:\\Users\\Gabija\\.nuget\\packages\\microsoft.owin.security\\2.1.0\\microsoft.owin.security.2.1.0.nupkg.sha512",
+    "C:\\Users\\Gabija\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
+    "C:\\Users\\Gabija\\.nuget\\packages\\owin\\1.0.0\\owin.1.0.0.nupkg.sha512"
   ],
   "logs": [
     {
