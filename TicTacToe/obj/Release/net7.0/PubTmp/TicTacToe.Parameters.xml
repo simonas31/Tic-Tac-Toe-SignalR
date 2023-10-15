@@ -1,6 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<parameters>
-  <parameter name="IIS Web Application Name" description="" value="tttdp" tags="IisApp">
-    <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Users\\babar\\Desktop\\UNI\\7\ semestras\\Objektinis\ programu\ projektavimas\(Design\ patterns\)\\Tic-Tac-Toe-SignalR\\TicTacToe\\obj\\Release\\net7\.0\\PubTmp\\Out\\$" />
-  </parameter>
-</parameters>
