@@ -1,4 +1,4 @@
-﻿using System;
+﻿using TicTacToe.GameObjects;
 
 namespace TicTacToe.Models
 {

@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.SignalR;
 using System.Collections.Concurrent;
-using System.ComponentModel;
+using TicTacToe.GameObjects;
 using TicTacToe.Models;
 
 namespace TicTacToe.Hubs
@@ -8,8 +8,7 @@ namespace TicTacToe.Hubs
     public class GameState
     {
         // GameState Singleton
-        private readonly static Lazy<GameState> instance =
-            new Lazy<GameState>(() => new GameState());
+        private static GameState _instance;
 
         private readonly ConcurrentDictionary<string, Player> players =
             new ConcurrentDictionary<string, Player>(StringComparer.OrdinalIgnoreCase);
@@ -20,13 +19,16 @@ namespace TicTacToe.Hubs
         private readonly ConcurrentQueue<Player> waitingPlayers =
             new ConcurrentQueue<Player>();
 
-        public GameState()
-        {
-        }
+        private GameState() { }
 
         public static GameState Instance
         {
-            get { return instance.Value; }
+            get { 
+                if(_instance == null)
+                    _instance = new GameState();
+
+                return _instance;
+            }
         }
 
         public Player CreatePlayer(string username, string roomName, string connectionId)

@@ -1,4 +1,4 @@
-﻿using TicTacToe.Models;
+﻿using TicTacToe.GameObjects;
 
 public interface IWinningStrategy
 {

@@ -1,3 +1,5 @@
+using TicTacToe.GameObjects;
+
 namespace TicTacToe.Models
 {
     public class GameSubject :Subject

@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.SignalR;
 using TicTacToe.Models;
 using Newtonsoft.Json;
-using System.ComponentModel;
+using TicTacToe.GameObjects;
 
 namespace TicTacToe.Hubs
 {
-	public class GameHub : Hub
+    public class GameHub : Hub
 	{
 		/// <summary>
 		/// The starting point for a client looking to join a new game.

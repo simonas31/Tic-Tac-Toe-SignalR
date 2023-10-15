@@ -1,8 +1,8 @@
-namespace TicTacToe.Models
+namespace TicTacToe.GameObjects
 {
     public class Cell
     {
-        public string Value { get; private set;}
+        public string Value { get; private set; }
 
         /// <summary>
         /// constructor
@@ -35,7 +35,8 @@ namespace TicTacToe.Models
         /// get status if cell is itself or it's child classes
         /// </summary>
         /// <returns>status that it's Cell class</returns>
-        public string getStatus(){
+        public string getStatus()
+        {
             return "general";
         }
 
