@@ -16,11 +16,13 @@ namespace TicTacToe.GameObjects
         {
             // TODO: Make the dimensions of the board constants
             Pieces = new Cell[3, 3];
+            Cell cell = new Cell();
+            Cell clone = cell.Clone();
             for (int i = 0; i < 3; i++)
             {
                 for (int j = 0; j < 3; j++)
                 {
-                    Pieces[i, j] = new Cell();
+                    Pieces[i, j] = clone;
                 }
             }
         }

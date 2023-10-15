@@ -1,6 +1,8 @@
+using TicTacToe.Patterns.Prototype;
+
 namespace TicTacToe.GameObjects
 {
-    public class Cell
+    public class Cell : CellPrototype
     {
         public string Value { get; private set; }
 
@@ -47,6 +49,11 @@ namespace TicTacToe.GameObjects
         public override string ToString()
         {
             return Value;
+        }
+
+        public override Cell Clone()
+        {
+            return (Cell)this.MemberwiseClone();
         }
     }
 }
