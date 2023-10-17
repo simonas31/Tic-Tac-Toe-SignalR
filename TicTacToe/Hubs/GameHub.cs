@@ -2,6 +2,7 @@
 using TicTacToe.Models;
 using Newtonsoft.Json;
 using TicTacToe.GameObjects;
+using TicTacToe.Patterns.ForPrototype;
 
 namespace TicTacToe.Hubs
 {
@@ -26,22 +27,22 @@ namespace TicTacToe.Hubs
 				await Clients.Caller.SendAsync("cannotEnterRoom");
 				return;
 			}
-
+           
 			Player joiningPlayer = GameState.Instance.CreatePlayer(username, roomName, this.Context.ConnectionId);
-            await Clients.Caller.SendAsync("playerJoined", joiningPlayer);
+			await Clients.Caller.SendAsync("playerJoined", joiningPlayer);
 
             // Find any pending games if any
             Player opponent = GameState.Instance.GetWaitingOpponent(roomName);//add parameter roomName
-			Player2Factory factory = new Player2Factory();
+            Player2Factory factory = new Player2Factory();
             if (opponent == null)
 			{
-				// No waiting players so enter the waiting pool
+				//No waiting players so enter the waiting pool
 				//GameState.Instance.AddToWaitingPool(joiningPlayer);//add parameter roomName
-    //            await this.Clients.Caller.SendAsync("waitingList");
+				//await this.Clients.Caller.SendAsync("waitingList");
             }else
 			{
 				// Join hosted game
-				Game joiningGame = GameState.Instance.GetGame(joiningPlayer, roomName);
+				Game joiningGame = GameState.Instance.GetGame(roomName);
 				if(joiningGame == null)
 				{
                     await Clients.Caller.SendAsync("couldNotJoinGame");
@@ -51,9 +52,13 @@ namespace TicTacToe.Hubs
 				{
 					joiningPlayer.Piece = factory.CreatePiece(joiningPlayer).ToString();
 					joiningGame.Player2 = joiningPlayer;
-                    await Groups.AddToGroupAsync(Context.ConnectionId, joiningGame.GameRoomName);//add parameter roomName
+
+					GamePrototype gp = new GamePrototype(joiningGame);//this is for prototype. comment this.
+
+                    await Groups.AddToGroupAsync(Context.ConnectionId, joiningGame.GameRoomName);
                     await Clients.Group(joiningGame.GameRoomName).SendAsync("startGame", JsonConvert.SerializeObject(joiningGame));
-				}
+					await Clients.Group(joiningGame.GameRoomName).SendAsync("showCloneDiff", JsonConvert.SerializeObject(gp));//this is for prototype. comment this.
+                }
             }
         }
 

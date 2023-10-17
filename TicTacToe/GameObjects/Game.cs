@@ -1,8 +1,9 @@
-﻿using TicTacToe.Models;
+﻿using TicTacToe.Interfaces;
+using TicTacToe.Models;
 
 namespace TicTacToe.GameObjects
 {
-    public class Game
+    public class Game : IPrototype<Game>
     {
         private bool isFirstPlayersTurn;
 
@@ -29,7 +30,7 @@ namespace TicTacToe.GameObjects
         /// </summary>
         /// <param name="player1">The first player to join the game.</param>
         /// <param name="player2">The second player to join the game.</param>
-        public Game(GameFactory player1Factory, GameFactory player2Factory, Player player1, Player player2, string roomName)
+        public Game(GameFactory gameFactory1, GameFactory gameFactory2, Player player1, Player player2, string roomName)
         {
             Player1 = player1;
             Player2 = player2;
@@ -40,18 +41,18 @@ namespace TicTacToe.GameObjects
 
             // Link the players to the game as well
             Player1.PlayingRoomName = GameRoomName;
-            Player1.Piece = player1Factory.CreatePiece(player1).ToString();
+            Player1.Piece = gameFactory1.CreatePiece(player1).ToString();
 
             if (Player2 != null)
             {
                 Player2.PlayingRoomName = GameRoomName;
-                Player2.Piece = player2Factory.CreatePiece(player1).ToString(); ;
+                Player2.Piece = gameFactory2.CreatePiece(player1).ToString(); ;
             }
         }
 
-        ///// <summary>
-        ///// A unique identifier for this game.
-        ///// </summary>
+        /// <summary>
+        /// A unique identifier for this game.
+        /// </summary>
         //public string Id { get; set; }
 
         /// <summary>
@@ -62,7 +63,7 @@ namespace TicTacToe.GameObjects
         /// <summary>
         /// One of two partipants of the game.
         /// </summary>
-        public Player Player1 { get; set; }
+        public Player? Player1 { get; set; }
 
         /// <summary>
         /// One of two participants of the game.
@@ -81,9 +82,7 @@ namespace TicTacToe.GameObjects
         {
             get
             {
-                return isFirstPlayersTurn ?
-                    Player1 :
-                    Player2;
+                return isFirstPlayersTurn ? Player1 : Player2;
             }
         }
 
@@ -118,9 +117,7 @@ namespace TicTacToe.GameObjects
         /// <param name="col">The column where the piece will be placed.</param>
         public void PlacePiece(int row, int col)
         {
-            string pieceToPlace = isFirstPlayersTurn ?
-                Player1.Piece :
-                Player2.Piece;
+            string pieceToPlace = isFirstPlayersTurn ? Player1.Piece : Player2.Piece;
             Board.PlacePiece(row, col, pieceToPlace);
 
             isFirstPlayersTurn = !isFirstPlayersTurn;
@@ -152,6 +149,22 @@ namespace TicTacToe.GameObjects
         {
             return string.Format("(Id={0}, Player1={1}, Player2={2}, Board={3})",
                 GameRoomName, Player1, Player2, Board);
+        }
+
+        public Game ShallowCopy()
+        {
+            return (Game)this.MemberwiseClone();
+        }
+
+        public Game DeepCopy()
+        {
+            Player1Factory player1Factory = new Player1Factory();
+            Player2Factory player2Factory = new Player2Factory();
+            Player player1 = new Player(Player1.Name, Player1.PlayingRoomName, Player1.Id);
+            player1.Piece = this.Player1.Piece;
+            Player player2 = new Player(Player2.Name, Player2.PlayingRoomName, Player2.Id);
+            player2.Piece = this.Player2.Piece;
+            return new Game(player1Factory, player2Factory, player1, player2, this.GameRoomName);
         }
     }
 }

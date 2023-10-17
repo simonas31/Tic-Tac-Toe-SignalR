@@ -8,7 +8,7 @@ namespace TicTacToe.Hubs
     public class GameState
     {
         // GameState Singleton
-        private static GameState _instance;
+        private static GameState? _instance;
 
         private readonly ConcurrentDictionary<string, Player> players =
             new ConcurrentDictionary<string, Player>(StringComparer.OrdinalIgnoreCase);
@@ -50,9 +50,9 @@ namespace TicTacToe.Hubs
             return foundPlayer;
         }
 
-        public Game GetGame(Player player, string roomName)
+        public Game GetGame(string roomName)
         {
-            Game foundGame = games.Values.FirstOrDefault(g => g.GameRoomName == player.PlayingRoomName);
+            Game foundGame = games.Values.FirstOrDefault(g => g.GameRoomName.Equals(roomName));
 
             if (foundGame == null)
             {
