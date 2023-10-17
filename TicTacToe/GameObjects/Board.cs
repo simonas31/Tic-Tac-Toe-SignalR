@@ -11,15 +11,22 @@ namespace TicTacToe.GameObjects
         /// The number of pieces that have been placed on the board.
         /// </summary>
         private int totalPiecesPlaced { get; set; }
-
+        /// <summary>
+        /// Size of the board 3, 4, 5
+        /// </summary>
+        public int BoardSize { get; set; }
+        /// <summary>
+        /// Checks if game ended
+        /// </summary>
+        public virtual bool GameEnded { get; }
         public Board()
         {
             // TODO: Make the dimensions of the board constants
-            Pieces = new Cell[3, 3];
+            Pieces = new Cell[BoardSize, BoardSize];
             Cell cell = new Cell();
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < BoardSize; i++)
             {
-                for (int j = 0; j < 3; j++)
+                for (int j = 0; j < BoardSize; j++)
                 {
                     Pieces[i, j] = cell;
                 }
@@ -34,6 +41,7 @@ namespace TicTacToe.GameObjects
 
         protected void Set(int n)
         {
+            BoardSize = n;
             Pieces = new Cell[n, n];
             for (int i = 0; i < n; i++)
             {
@@ -41,55 +49,6 @@ namespace TicTacToe.GameObjects
                 {
                     Pieces[i, j] = new Cell();
                 }
-            }
-        }
-        /// <summary>
-        /// Determines whether there are three pieces in a row that match.
-        /// Possible configurations are either horizontal, vertical, or the diagonals.
-        /// </summary>
-        public bool IsThreeInRow
-        {
-            get
-            {
-                // Check all rows
-                for (int row = 0; row < Pieces.GetLength(0); row++)
-                {
-                    if (Pieces[row, 0] != null && !string.IsNullOrWhiteSpace(Pieces[row, 0].Value) &&
-                        Pieces[row, 0].Value == Pieces[row, 1].Value &&
-                        Pieces[row, 1].Value == Pieces[row, 2].Value)
-                    {
-                        return true;
-                    }
-                }
-
-                // Check all columns
-                for (int col = 0; col < Pieces.GetLength(1); col++)
-                {
-                    if (Pieces[0, col] != null && !string.IsNullOrWhiteSpace(Pieces[0, col].Value) &&
-                        Pieces[0, col].Value == Pieces[1, col].Value &&
-                        Pieces[1, col].Value == Pieces[2, col].Value)
-                    {
-                        return true;
-                    }
-                }
-
-                // Check forward-diagonal
-                if (Pieces[1, 1] != null && !string.IsNullOrWhiteSpace(Pieces[1, 1].Value) &&
-                    Pieces[2, 0].Value == Pieces[1, 1].Value &&
-                    Pieces[1, 1].Value == Pieces[0, 2].Value)
-                {
-                    return true;
-                }
-
-                // Check backward-diagonal
-                if (Pieces[1, 1] != null && !string.IsNullOrWhiteSpace(Pieces[1, 1].Value) &&
-                    Pieces[0, 0].Value == Pieces[1, 1].Value &&
-                    Pieces[1, 1].Value == Pieces[2, 2].Value)
-                {
-                    return true;
-                }
-
-                return false;
             }
         }
 

@@ -12,11 +12,12 @@ namespace TicTacToe.GameObjects
         /// </summary>
         /// <param name="player1">The first player to join the game.</param>
         /// <param name="player2">The second player to join the game.</param>
-        public Game(Player1Factory player1Factory, Player player1, string roomName)
+        public Game(Player1Factory player1Factory, Player player1, string roomName, int boardSize, bool obstacles)
         {
             Player1 = player1;
             GameRoomName = roomName;
-            Board = BoardCreator.factoryMethod(3);
+            ToggleObstacles = obstacles;
+            Board = BoardCreator.factoryMethod(boardSize);
 
             isFirstPlayersTurn = true;
 
@@ -30,12 +31,13 @@ namespace TicTacToe.GameObjects
         /// </summary>
         /// <param name="player1">The first player to join the game.</param>
         /// <param name="player2">The second player to join the game.</param>
-        public Game(GameFactory gameFactory1, GameFactory gameFactory2, Player player1, Player player2, string roomName)
+        public Game(GameFactory gameFactory1, GameFactory gameFactory2, Player player1, Player player2, string roomName, int boardSize, bool obstacles)
         {
             Player1 = player1;
             Player2 = player2;
             GameRoomName = roomName;
-            Board = BoardCreator.factoryMethod(3);
+            ToggleObstacles = obstacles;
+            Board = BoardCreator.factoryMethod(boardSize);
 
             isFirstPlayersTurn = true;
 
@@ -76,6 +78,11 @@ namespace TicTacToe.GameObjects
         public Board Board { get; set; }
 
         /// <summary>
+        /// Checks if obstacles are on for that game
+        /// </summary>
+        public bool ToggleObstacles { get; set; }
+
+        /// <summary>
         /// Returns which player is currently allowed to place a piece down.
         /// </summary>
         public Player WhoseTurn
@@ -94,7 +101,8 @@ namespace TicTacToe.GameObjects
         {
             get
             {
-                return IsTie || Board.IsThreeInRow;
+                Console.WriteLine(Board.BoardSize);
+                return IsTie || Board.GameEnded;
             }
         }
 
@@ -135,7 +143,7 @@ namespace TicTacToe.GameObjects
         {
             // TODO: Make the board dimensions public properties
             bool cond1 = row < Board.Pieces.GetLength(0);
-            bool cond2 = row < Board.Pieces.GetLength(1);
+            bool cond2 = col < Board.Pieces.GetLength(1);
             bool cond3 = string.IsNullOrWhiteSpace(Board.Pieces[row, col].Value);
 
 
@@ -164,7 +172,7 @@ namespace TicTacToe.GameObjects
             player1.Piece = this.Player1.Piece;
             Player player2 = new Player(Player2.Name, Player2.PlayingRoomName, Player2.Id);
             player2.Piece = this.Player2.Piece;
-            return new Game(player1Factory, player2Factory, player1, player2, this.GameRoomName);
+            return new Game(player1Factory, player2Factory, player1, player2, this.GameRoomName, this.Board.BoardSize, this.ToggleObstacles);
         }
     }
 }

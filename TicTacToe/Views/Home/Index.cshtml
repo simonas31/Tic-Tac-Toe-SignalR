@@ -34,9 +34,9 @@
     <main class="container text-center">
         <h1>Tic-Tac-Toe</h1>
 
-        <div class="d-flex flex-row mx-auto justify-content-center" style="max-width: 800px;">
+        <div class="d-flex flex-row mx-auto justify-content-center">
             @* Host game *@
-            <div class="">
+            <div>
                 <label class="sr-only control-label mb-2" for="roomName">Room name</label>
                 <div class="d-flex flex-row justify-content-center">
                     <div class="form-group mx-sm-3 mb-2" id="hostGameGroup">
@@ -47,6 +47,27 @@
                 <p id="roomNameStatus" class="help-block">If you want to host the game please enter <br> room name and username.</p>
             </div>
 
+            <div class="vr mx-auto"></div>
+
+            <div class="row align-content-center">
+                <div class="col">
+                    <div class="row">
+                        <div class="col">
+                            <label>Choose board size: &nbsp </label>
+                            <select id="boardSize">
+                                <option value="3">3x3</option>
+                                <option value="4">4x4</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label>Enable obstacles: &nbsp </label>
+                            <input type="checkbox" id="obstacles"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="vr mx-auto"></div>
 
             @* Join game *@
@@ -73,22 +94,12 @@
 
         <div class="row">
             <div class="col-4">
-                <p>
-                    Deep Copy
-                </p>
-                
                 <p id="deep"></p>
             </div>
             <div class="col-4">
-                <p>
-                    Original
-                </p>
                 <p id="original"></p>
             </div>
             <div class="col-4">
-                <p>
-                    Shallow Copy
-                </p>
                 <p id="shallow"></p>
             </div>
         </div>
