@@ -10,6 +10,7 @@
 
     // Create a SignalR connection instance
     var gameHub = new signalR.HubConnectionBuilder()
+        .configureLogging(signalR.LogLevel.Information)
         .withUrl("/gameHub") // Use the correct URL for your SignalR hub
         .build();
 
@@ -117,6 +118,18 @@
         $('#gameStatus').html("Game ended.");
     });
 
+    //this is for prototype. comment to disable it
+    gameHub.on("showCloneDiff", (gamePrototype) => {
+        let objects = JSON.parse(gamePrototype);
+        let text = `Before changes: </br> Player1 playing room: ${objects.OriginalPlayer1Room} </br> Player2 playing room: ${objects.OriginalPlayer2Room} </br>`;
+        $('#deep').html(text + `After changes: </br> Player1 playing room: ${objects.GameDeepCopy.Player1.PlayingRoomName} </br> Player2 playing room: ${objects.GameDeepCopy.Player2.PlayingRoomName}`);
+        $('#original').html(text + `After changes: </br> Player1 playing room: ${objects.GameOriginal.Player1.PlayingRoomName} </br> Player2 playing room: ${objects.GameOriginal.Player2.PlayingRoomName}`);
+        $('#shallow').html(text + `After changes: </br> Player1 playing room: ${objects.GameShallowCopy.Player1.PlayingRoomName} </br> Player2 playing room: ${objects.GameShallowCopy.Player2.PlayingRoomName}`);
+    });
+
+    //-----------------------------------------------------------------------------------
+    //                               JQUERY/FUNCTIONS
+    //-----------------------------------------------------------------------------------
     $('#hostGame').click(() => {
         let result = removeWhiteSpace();
         if (result[0]) {

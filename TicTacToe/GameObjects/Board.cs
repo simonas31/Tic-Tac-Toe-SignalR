@@ -10,19 +10,18 @@ namespace TicTacToe.GameObjects
         /// <summary>
         /// The number of pieces that have been placed on the board.
         /// </summary>
-        private int totalPiecesPlaced;
+        private int totalPiecesPlaced { get; set; }
 
         public Board()
         {
             // TODO: Make the dimensions of the board constants
             Pieces = new Cell[3, 3];
             Cell cell = new Cell();
-            Cell clone = cell.Clone();
             for (int i = 0; i < 3; i++)
             {
                 for (int j = 0; j < 3; j++)
                 {
-                    Pieces[i, j] = clone;
+                    Pieces[i, j] = cell;
                 }
             }
         }

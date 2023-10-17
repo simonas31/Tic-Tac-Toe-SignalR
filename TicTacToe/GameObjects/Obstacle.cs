@@ -1,4 +1,5 @@
 ﻿using System.Data;
+using TicTacToe.Interfaces;
 using TicTacToe.Models;
 
 namespace TicTacToe.GameObjects
