@@ -19,5 +19,13 @@ namespace TicTacToe.GameObjects
                 return winningStrategy.IsFourInRow(Pieces);
             }
         }
+
+        public override bool GameEnded
+        {
+            get
+            {
+                return this.winningStrategy.IsFourInRow(Pieces);
+            }
+        }
     }
 }

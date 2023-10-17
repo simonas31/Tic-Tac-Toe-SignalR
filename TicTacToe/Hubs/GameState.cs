@@ -62,17 +62,14 @@ namespace TicTacToe.Hubs
             return foundGame;
         }
 
-        public Game GetGame(Player player, out Player opponent)
+        public Game GetGame(Player player)
         {
-            opponent = null;
             Game foundGame = games.Values.FirstOrDefault(g => g.GameRoomName == player.PlayingRoomName);
 
             if (foundGame == null)
             {
                 return null;
             }
-
-            opponent = (player.Id == foundGame.Player1.Id) ? foundGame.Player2 : foundGame.Player1;
 
             return foundGame;
         }
@@ -121,10 +118,10 @@ namespace TicTacToe.Hubs
             return this.games.Values.FirstOrDefault(game => game.GameRoomName.Equals(roomName) && game.Player1 != null && game.Player2 == null) != null;
         }
 
-        public async Task<Game> CreateGame(Player firstPlayer, IGroupManager groupManager, string roomName)
+        public async Task<Game> CreateGame(Player firstPlayer, IGroupManager groupManager, string roomName, int boardSize, bool obstacles)
         {
             Player1Factory gameFactory = new Player1Factory();
-            Game game = new Game(gameFactory, firstPlayer, roomName);
+            Game game = new Game(gameFactory, firstPlayer, roomName, boardSize, obstacles);
             this.games[game.GameRoomName] = game;
 
             if (groupManager != null)

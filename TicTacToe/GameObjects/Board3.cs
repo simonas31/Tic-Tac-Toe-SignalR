@@ -20,4 +20,12 @@ public class Board3 : Board
             return winningStrategy.IsThreeInRow(Pieces);
         }
     }
+
+    public override bool GameEnded
+    {
+        get
+        {
+            return this.IsThreeInRow;
+        }
+    }
 }

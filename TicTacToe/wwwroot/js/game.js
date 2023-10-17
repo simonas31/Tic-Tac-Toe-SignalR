@@ -122,9 +122,9 @@
     gameHub.on("showCloneDiff", (gamePrototype) => {
         let objects = JSON.parse(gamePrototype);
         let text = `Before changes: </br> Player1 playing room: ${objects.OriginalPlayer1Room} </br> Player2 playing room: ${objects.OriginalPlayer2Room} </br>`;
-        $('#deep').html(text + `After changes: </br> Player1 playing room: ${objects.GameDeepCopy.Player1.PlayingRoomName} </br> Player2 playing room: ${objects.GameDeepCopy.Player2.PlayingRoomName}`);
-        $('#original').html(text + `After changes: </br> Player1 playing room: ${objects.GameOriginal.Player1.PlayingRoomName} </br> Player2 playing room: ${objects.GameOriginal.Player2.PlayingRoomName}`);
-        $('#shallow').html(text + `After changes: </br> Player1 playing room: ${objects.GameShallowCopy.Player1.PlayingRoomName} </br> Player2 playing room: ${objects.GameShallowCopy.Player2.PlayingRoomName}`);
+        $('#deep').html("Deep Copy </br>" + text + `After changes: </br> Player1 playing room: ${objects.GameDeepCopy.Player1.PlayingRoomName} </br> Player2 playing room: ${objects.GameDeepCopy.Player2.PlayingRoomName}`);
+        $('#original').html("Original </br>" + text + `After changes: </br> Player1 playing room: ${objects.GameOriginal.Player1.PlayingRoomName} </br> Player2 playing room: ${objects.GameOriginal.Player2.PlayingRoomName}`);
+        $('#shallow').html("Shallow Copy </br>" + text + `After changes: </br> Player1 playing room: ${objects.GameShallowCopy.Player1.PlayingRoomName} </br> Player2 playing room: ${objects.GameShallowCopy.Player2.PlayingRoomName}`);
     });
 
     //-----------------------------------------------------------------------------------
@@ -132,9 +132,12 @@
     //-----------------------------------------------------------------------------------
     $('#hostGame').click(() => {
         let result = removeWhiteSpace();
+        let boardSize = parseInt($("#boardSize").val());
+        let toggleObstacles = $("#obstacles").is(":checked") === "true" ? true : false;
+
         if (result[0]) {
             disableInput();
-            gameHub.invoke("HostGame", result[1], result[2]);
+            gameHub.invoke("HostGame", result[1], result[2], boardSize, toggleObstacles);
         }
     });
 
@@ -226,13 +229,16 @@
         $("#board").html("");
         $('#tableHidden').removeAttr('hidden');
         let tr = document.createElement('tr');
-        for (let i = 0; i < 9; i++) {
-            if (i % 3 == 0 && i != 0) {
+        let boardSize = board.BoardSize
+        let boardCells = boardSize * boardSize;
+
+        for (let i = 0; i < boardCells; i++) {
+            if (i % boardSize == 0 && i != 0) {
                 $('#board').append(tr);
                 tr = document.createElement('tr');
             }
             let td = document.createElement('td');
-            td.id = (i % 3) + "-" + Math.floor(i / 3);
+            td.id = (i % boardSize) + "-" + Math.floor(i / boardSize);
             tr.append(td);
         }
         $('#board').append(tr);

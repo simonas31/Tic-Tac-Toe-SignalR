@@ -53,11 +53,11 @@ namespace TicTacToe.Hubs
 					joiningPlayer.Piece = factory.CreatePiece(joiningPlayer).ToString();
 					joiningGame.Player2 = joiningPlayer;
 
-					GamePrototype gp = new GamePrototype(joiningGame);//this is for prototype. comment this.
+					//GamePrototype gp = new GamePrototype(joiningGame);//this is for prototype. comment this.
 
                     await Groups.AddToGroupAsync(Context.ConnectionId, joiningGame.GameRoomName);
                     await Clients.Group(joiningGame.GameRoomName).SendAsync("startGame", JsonConvert.SerializeObject(joiningGame));
-					await Clients.Group(joiningGame.GameRoomName).SendAsync("showCloneDiff", JsonConvert.SerializeObject(gp));//this is for prototype. comment this.
+					//await Clients.Group(joiningGame.GameRoomName).SendAsync("showCloneDiff", JsonConvert.SerializeObject(gp));//this is for prototype. comment this.
                 }
             }
         }
@@ -66,9 +66,11 @@ namespace TicTacToe.Hubs
         /// Client is hosting the game and is put into waiting list.
         /// </summary>
         /// <param name="username">User chosen username.</param>
-        /// <param name="roomname">User chosen room name.</param>
+        /// <param name="roomName">User chosen room name.</param>
+		/// <param name="boardSize">User chosen board size.</>
+		/// <param name="obstacles">User chosen if there should be obstacles.</>
         /// <returns>A Task to track the asynchronous method execution.</returns>
-        public async Task HostGame(string username, string roomName)
+        public async Task HostGame(string username, string roomName, int boardSize, bool obstacles)
 		{
 			if (GameState.Instance.IsRoomNameTaken(roomName))
 			{
@@ -85,7 +87,7 @@ namespace TicTacToe.Hubs
 
 			// An opponent was found so join a new game and start the game
 			// Opponent is first player since they were waiting first
-            Game newGame = await GameState.Instance.CreateGame(joiningPlayer, this.Groups, roomName);//add parameter roomName
+            Game newGame = await GameState.Instance.CreateGame(joiningPlayer, this.Groups, roomName, boardSize, obstacles);//add parameter roomName
             await Groups.AddToGroupAsync(Context.ConnectionId, newGame.GameRoomName);//add parameter roomName
 			await Clients.Caller.SendAsync("startHost");
         }
@@ -99,8 +101,7 @@ namespace TicTacToe.Hubs
         public async Task PlacePiece(int row, int col)
         {
 			Player playerMakingTurn = GameState.Instance.GetPlayer(playerId: this.Context.ConnectionId);
-			Player opponent;
-			Game game = GameState.Instance.GetGame(playerMakingTurn, out opponent);
+			Game game = GameState.Instance.GetGame(playerMakingTurn);
 
 			if(game == null)
 			{
@@ -167,8 +168,7 @@ namespace TicTacToe.Hubs
             // Only handle cases where user was a player in a game or waiting for an opponent
             if (leavingPlayer != null)
 			{
-				Player opponent;
-				Game ongoingGame = GameState.Instance.GetGame(leavingPlayer, out opponent);
+				Game ongoingGame = GameState.Instance.GetGame(leavingPlayer);
 				if (ongoingGame != null)
 				{
 					await Groups.AddToGroupAsync(Context.ConnectionId, ongoingGame.GameRoomName);
