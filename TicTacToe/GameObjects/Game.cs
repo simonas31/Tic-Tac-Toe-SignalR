@@ -101,7 +101,6 @@ namespace TicTacToe.GameObjects
         {
             get
             {
-                Console.WriteLine(Board.BoardSize);
                 return IsTie || Board.GameEnded;
             }
         }
