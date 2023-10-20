@@ -1,4 +1,5 @@
 using TicTacToe.GameObjects;
+using TicTacToe.Interfaces;
 
 namespace TicTacToe.Models;
 
@@ -11,7 +12,7 @@ public class BoardCreator
     /// </summary>
     /// <param name="type">dimensions for the board</param>
     /// <returns></returns>
-    public static Board factoryMethod(int type)
+    public static ITicTacToeBoard factoryMethod(int type)
     {
         if(type == 3)
         {
@@ -20,6 +21,18 @@ public class BoardCreator
         else if (type == 4)
         {
             return new Board4();
+        }
+        else if (type == 9)
+        {
+            Cell[,] megaBoard = new Cell[9, 9];
+            for (int i = 0; i < 9; i++)
+            {
+                for (int j = 0; j < 9; j++)
+                {
+                    megaBoard[i, j] = new Cell(); // or initialize it with some default value if required
+                }
+            }
+            return new MegaBoardAdapter(megaBoard);
         }
         else
         {

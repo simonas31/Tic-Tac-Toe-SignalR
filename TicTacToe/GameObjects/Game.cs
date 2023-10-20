@@ -8,7 +8,7 @@ namespace TicTacToe.GameObjects
         private bool isFirstPlayersTurn;
 
         /// <summary>
-        /// Creates a new game object.
+        /// Creates a new game object. For actual game
         /// </summary>
         /// <param name="player1">The first player to join the game.</param>
         /// <param name="player2">The second player to join the game.</param>
@@ -27,7 +27,7 @@ namespace TicTacToe.GameObjects
         }
 
         /// <summary>
-        /// Creates a new game object.
+        /// Creates a new game object. For Prototype
         /// </summary>
         /// <param name="player1">The first player to join the game.</param>
         /// <param name="player2">The second player to join the game.</param>
@@ -75,7 +75,7 @@ namespace TicTacToe.GameObjects
         /// <summary>
         /// The board that represents the tic-tac-toe game.
         /// </summary>
-        public Board Board { get; set; }
+        public ITicTacToeBoard Board { get; set; }
 
         /// <summary>
         /// Checks if obstacles are on for that game

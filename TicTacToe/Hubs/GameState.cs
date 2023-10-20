@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.SignalR;
 using System.Collections.Concurrent;
 using TicTacToe.GameObjects;
+using TicTacToe.Interfaces;
 using TicTacToe.Models;
 
 namespace TicTacToe.Hubs

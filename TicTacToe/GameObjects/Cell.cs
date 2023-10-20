@@ -2,7 +2,7 @@ namespace TicTacToe.GameObjects
 {
     public class Cell
     {
-        public string Value { get; private set; }
+        public string Value { get; set; }
 
         /// <summary>
         /// constructor
