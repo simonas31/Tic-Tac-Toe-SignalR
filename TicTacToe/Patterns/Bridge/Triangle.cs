@@ -2,16 +2,16 @@
 
 namespace TicTacToe.Patterns.Bridge
 {
-    public class Triangle : IShape
+    public class Triangle : Interfaces.Shape
     {
-        private IColor color;
+        private Color color;
 
-        public Triangle(IColor color)
+        public Triangle(Color color)
         {
             this.color = color;
         }
 
-        public string Draw()
+        public override string Draw()
         {
             return $"a {color.Fill()} triangle";
         }

@@ -9,7 +9,7 @@ namespace TicTacToe.Models
         public override string RenderBoard(int size)
         {
             StringBuilder sb = new StringBuilder();
-            IShape shape;
+            Interfaces.Shape shape;
             string shapeDescription;
 
             if (size == 3)

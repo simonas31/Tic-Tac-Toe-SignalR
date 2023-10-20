@@ -2,9 +2,9 @@
 
 namespace TicTacToe.Patterns.Bridge
 {
-    public class Red : IColor
+    public class Red : Color
     {
-        public string Fill()
+        public override string Fill()
         {
             return "red";
         }
