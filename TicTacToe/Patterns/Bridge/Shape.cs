@@ -4,9 +4,9 @@ namespace TicTacToe.Patterns.Bridge
 {
     public abstract class Shape
     {
-        protected Color color;
+        protected IColor color;
 
-        public Shape(Color color)
+        public Shape(IColor color)
         {
             this.color = color;
         }
