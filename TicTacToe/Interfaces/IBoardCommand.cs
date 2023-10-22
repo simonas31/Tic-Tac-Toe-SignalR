@@ -1,6 +1,11 @@
-﻿namespace TicTacToe.Interfaces
+﻿using TicTacToe.GameObjects;
+
+namespace TicTacToe.Interfaces
 {
-    public class IBoardCommand
+    public interface IBoardCommand
     {
+        void Execute(Board4 board);
+        void Undo(Board4 board);
     }
+
 }
