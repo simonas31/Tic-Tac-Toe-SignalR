@@ -1,20 +1,21 @@
 ﻿using TicTacToe.GameObjects;
+using TicTacToe.Interfaces;
 
 namespace TicTacToe.Models
 {
     public class Player1Factory : GameFactory
     {
-        public override Obstacle CreateObstacle()
+        public IObstacle CreateObstacle()
         {
             return new Obstacle("W");
         }
 
-        public override Piece CreatePiece(Player player)
+        public IPiece CreatePiece(Player player)
         {
             return new Piece("X");
         }
 
-        public override Comment CreateComment()
+        public IComment CreateComment()
         {
             return new Comment("#");
         }

@@ -4,7 +4,7 @@ using TicTacToe.Models;
 
 namespace TicTacToe.GameObjects
 {
-    public class Obstacle : Cell, Observer
+    public class Obstacle : Cell, Observer, IObstacle
     {
 
         public GameSubject instance { get; set; } // game instance
@@ -65,6 +65,11 @@ namespace TicTacToe.GameObjects
             {
                 Active = change;
             }
+        }
+
+        public string Block()
+        {
+            return "I Block";
         }
     }
 }

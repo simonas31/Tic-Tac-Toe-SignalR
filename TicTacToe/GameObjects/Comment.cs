@@ -1,6 +1,8 @@
-﻿namespace TicTacToe.GameObjects
+﻿using TicTacToe.Interfaces;
+
+namespace TicTacToe.GameObjects
 {
-    public class Comment : Cell
+    public class Comment : Cell, IComment
     {
 
         public Comment(string value) : base(value)
@@ -16,6 +18,11 @@
         public string getStatus()
         {
             return "comment";
+        }
+
+        string IComment.Comment()
+        {
+            return "Comment";
         }
     }
 }
