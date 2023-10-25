@@ -22,6 +22,14 @@ public class BoardCreator
         {
             return new Board4();
         }
+        else if (type == 5)
+        {
+            return new Board5();
+        }
+        else if (type == 6)
+        {
+            return new Board6();
+        }
         else if (type == 9)
         {
             Cell[,] megaBoard = new Cell[9, 9];
