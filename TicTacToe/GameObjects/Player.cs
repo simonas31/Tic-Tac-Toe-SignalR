@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TicTacToe.Controllers;
 
 namespace TicTacToe.GameObjects
 {
@@ -38,12 +39,13 @@ namespace TicTacToe.GameObjects
         /// Defines the piece that will be placed on the board to represent this user.
         /// The game will decide the game piece.
         /// </summary>
-        public string Piece { get; set; }
+        // public string Piece { get; set; }
+        public Decorator Piece {get; set;}
 
         public override string ToString()
         {
             return string.Format("(Id={0}, Name={1}, GameId={2}, Piece={3})",
-                Id, Name, PlayingRoomName, Piece);
+                Id, Name, PlayingRoomName, Piece.operation());
         }
 
         public override bool Equals(object obj)

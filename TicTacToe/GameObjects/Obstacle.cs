@@ -4,7 +4,7 @@ using TicTacToe.Models;
 
 namespace TicTacToe.GameObjects
 {
-    public class Obstacle : Cell, Observer
+    public class Obstacle : Cell, IObserver
     {
 
         public GameSubject instance { get; set; } // game instance
@@ -59,12 +59,9 @@ namespace TicTacToe.GameObjects
         /// change activity of obstacle
         /// </summary>
         /// <param name="change">activity of obstacle</param>
-        public void Update(bool change)
+        public void Update()
         {
-            if (observerState)
-            {
-                Active = change;
-            }
+            Active = observerState;
         }
     }
 }

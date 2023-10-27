@@ -87,8 +87,8 @@
     });
 
     // A piece has been placed on the board
-    gameHub.on("piecePlaced", (row, col, piece) => {
-        $('td[id='+row + '-' + col+']').html(piece);
+    gameHub.on("piecePlaced", (row, col, piece, color) => {
+        $('td[id='+row + '-' + col+']').html(piece).css('color', color);
     });
 
     // TODO: can be combined with piecePlaced by having the server
