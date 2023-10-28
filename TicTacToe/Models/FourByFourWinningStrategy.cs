@@ -30,16 +30,16 @@ namespace TicTacToe.Models
                 }
             }
 
-            // Check forward-diagonal
+            // Check diagonal from upper right to lower left
             if (Pieces[1, 1] != null && !string.IsNullOrWhiteSpace(Pieces[1, 1].Value) &&
-                Pieces[2, 0].Value == Pieces[1, 1].Value &&
-                Pieces[1, 1].Value == Pieces[0, 2].Value &&
-                Pieces[0, 2].Value == Pieces[3, 3].Value)
+                Pieces[0, 0].Value == Pieces[1, 1].Value &&
+                Pieces[1, 1].Value == Pieces[2, 2].Value &&
+                Pieces[2, 2].Value == Pieces[3, 3].Value)
             {
                 return true;
             }
 
-            // Check backward-diagonal
+            // Check diagonal from upper left to lower right
             if (Pieces[1, 2] != null && !string.IsNullOrWhiteSpace(Pieces[1, 2].Value) &&
                 Pieces[0, 3].Value == Pieces[1, 2].Value &&
                 Pieces[1, 2].Value == Pieces[2, 1].Value &&
@@ -73,6 +73,16 @@ namespace TicTacToe.Models
         public bool IsThreeInRow(Cell[,] pieces)
         {
             // Implement a method that always returns false for a 3x3 board.
+            return false;
+        }
+        public bool IsFiveInRow(Cell[,] pieces)
+        {
+            return false;
+        }
+
+        public bool IsSixInRow(Cell[,] pieces)
+        {
+
             return false;
         }
     }
