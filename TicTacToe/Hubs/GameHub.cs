@@ -3,6 +3,7 @@ using TicTacToe.Models;
 using Newtonsoft.Json;
 using TicTacToe.GameObjects;
 using TicTacToe.Patterns.ForPrototype;
+using TicTacToe.Controllers;
 
 namespace TicTacToe.Hubs
 {

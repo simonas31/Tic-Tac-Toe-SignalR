@@ -1,6 +1,6 @@
 using TicTacToe.Interfaces;
 
-namespace TicTacToe.Controllers
+namespace TicTacToe.Models.DecoratorPattern
 {
     public abstract class Decorator: Component
     {

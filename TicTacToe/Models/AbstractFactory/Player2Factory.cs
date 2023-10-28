@@ -1,6 +1,6 @@
-<<<<<<< HEAD:TicTacToe/Models/AbstractFactory/Player2Factory.cs
-﻿using TicTacToe.Controllers;
-using TicTacToe.GameObjects;
+﻿using TicTacToe.GameObjects;
+using TicTacToe.Interfaces;
+using TicTacToe.Models.DecoratorPattern;
 
 namespace TicTacToe.Models
 {
@@ -15,30 +15,10 @@ namespace TicTacToe.Models
         {
             return new ConcreteDecoratorO(new O("O"));
         }
-    }
-}
-=======
-﻿using TicTacToe.GameObjects;
-using TicTacToe.Interfaces;
 
-namespace TicTacToe.Models
-{
-    public class Player2Factory : GameFactory
-    {
-        public IObstacle CreateObstacle()
-        {
-            return new Obstacle("B");
-        }
-
-        public IPiece CreatePiece(Player player)
-        {
-            return new Piece("O");
-        }
-
-        public IComment CreateComment()
+        public override IComment CreateComment()
         {
             return new Comment("#");
         }
     }
 }
->>>>>>> main:TicTacToe/Models/Player2Factory.cs

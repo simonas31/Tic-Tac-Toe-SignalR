@@ -1,4 +1,5 @@
 using TicTacToe.Models;
+using TicTacToe.Models.Strategy;
 
 namespace TicTacToe.GameObjects
 {

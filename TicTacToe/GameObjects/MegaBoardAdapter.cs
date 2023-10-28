@@ -1,4 +1,6 @@
-﻿using TicTacToe.Interfaces;
+﻿using TicTacToe.Controllers;
+using TicTacToe.Interfaces;
+using TicTacToe.Models.DecoratorPattern;
 
 namespace TicTacToe.GameObjects
 {
@@ -49,9 +51,9 @@ namespace TicTacToe.GameObjects
             }
         }
 
-        public void PlacePiece(int row, int col, string pieceToPlace)
+        public void PlacePiece(int row, int col, Decorator pieceToPlace)
         {
-            _adapter.MakeMove(row, col, pieceToPlace);
+            _adapter.MakeMove(row, col, pieceToPlace.operation());
         }
     }
 }

@@ -4,7 +4,7 @@ using TicTacToe.Interfaces;
 namespace TicTacToe.Models;
 
 
-public class BoardCreator
+public class BoardCreator : ICreator
 {
 
     /// <summary>
@@ -12,7 +12,7 @@ public class BoardCreator
     /// </summary>
     /// <param name="type">dimensions for the board</param>
     /// <returns></returns>
-    public static ITicTacToeBoard factoryMethod(int type)
+    public Board FactoryMethod(int type)
     {
         if(type == 3)
         {
@@ -21,6 +21,14 @@ public class BoardCreator
         else if (type == 4)
         {
             return new Board4();
+        }
+        else if(type == 5)
+        {
+            return new Board5();
+        }
+        else if (type == 6)
+        {
+            return new Board6();
         }
         else
         {
