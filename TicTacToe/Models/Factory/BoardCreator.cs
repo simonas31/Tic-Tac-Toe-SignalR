@@ -2,11 +2,8 @@ using TicTacToe.GameObjects;
 using TicTacToe.Interfaces;
 
 namespace TicTacToe.Models;
-
-
 public class BoardCreator : ICreator
 {
-
     /// <summary>
     /// create specific board
     /// </summary>

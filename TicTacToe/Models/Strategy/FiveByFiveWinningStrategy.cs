@@ -1,4 +1,4 @@
-﻿using TicTacToe.GameObjects;
+using TicTacToe.GameObjects;
 
 namespace TicTacToe.Models.Strategy
 {
@@ -103,7 +103,6 @@ namespace TicTacToe.Models.Strategy
         }
         public bool IsSixInRow(Cell[,] pieces)
         {
-
             return false;
         }
     }

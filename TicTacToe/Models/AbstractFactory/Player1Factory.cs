@@ -1,6 +1,8 @@
-﻿using TicTacToe.Models.DecoratorPattern;
+
+using TicTacToe.Controllers;
 using TicTacToe.GameObjects;
 using TicTacToe.Interfaces;
+using TicTacToe.Models.DecoratorPattern;
 
 namespace TicTacToe.Models
 {
@@ -22,3 +24,4 @@ namespace TicTacToe.Models
         }
     }
 }
+
