@@ -12,7 +12,7 @@ namespace TicTacToe.GameObjects
         /// </summary>
         /// <param name="player1">The first player to join the game.</param>
         /// <param name="player2">The second player to join the game.</param>
-        public Game(Player1Factory player1Factory, Player player1, string roomName, int boardSize, bool obstacles)
+        public Game(GameFactory player1Factory, Player player1, string roomName, int boardSize, bool obstacles)
         {
             Player1 = player1;
             GameRoomName = roomName;
@@ -165,8 +165,8 @@ namespace TicTacToe.GameObjects
 
         public Game DeepCopy()
         {
-            Player1Factory player1Factory = new Player1Factory();
-            Player2Factory player2Factory = new Player2Factory();
+            GameFactory player1Factory = new Player1Factory();
+            GameFactory player2Factory = new Player2Factory();
             Player player1 = new Player(Player1.Name, Player1.PlayingRoomName, Player1.Id);
             player1.Piece = this.Player1.Piece;
             Player player2 = new Player(Player2.Name, Player2.PlayingRoomName, Player2.Id);

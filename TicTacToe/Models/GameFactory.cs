@@ -1,9 +1,10 @@
 ﻿using TicTacToe.GameObjects;
+using TicTacToe.Interfaces;
 
-public abstract class GameFactory
+public interface GameFactory
 {
-    public abstract Piece CreatePiece(Player player);
-    public abstract Obstacle CreateObstacle();
+    public IPiece CreatePiece(Player player);
+    public IObstacle CreateObstacle();
 
-    public abstract Comment CreateComment();
+    public IComment CreateComment();
 }
