@@ -1,4 +1,5 @@
-﻿using TicTacToe.Interfaces;
+﻿using TicTacToe.Controllers;
+using TicTacToe.Interfaces;
 using TicTacToe.Models;
 
 namespace TicTacToe.GameObjects
@@ -17,13 +18,14 @@ namespace TicTacToe.GameObjects
             Player1 = player1;
             GameRoomName = roomName;
             ToggleObstacles = obstacles;
-            Board = BoardCreator.factoryMethod(boardSize);
+            BoardCreator hold = new BoardCreator();
+            Board = hold.FactoryMethod(boardSize);
 
             isFirstPlayersTurn = true;
 
             // Link the players to the game as well
             Player1.PlayingRoomName = GameRoomName;
-            Player1.Piece = player1Factory.CreatePiece(player1).ToString();
+            Player1.Piece = player1Factory.CreatePiece(player1);
         }
 
         /// <summary>
@@ -37,18 +39,19 @@ namespace TicTacToe.GameObjects
             Player2 = player2;
             GameRoomName = roomName;
             ToggleObstacles = obstacles;
-            Board = BoardCreator.factoryMethod(boardSize);
+            BoardCreator hold = new BoardCreator();
+            Board = hold.FactoryMethod(boardSize);
 
             isFirstPlayersTurn = true;
 
             // Link the players to the game as well
             Player1.PlayingRoomName = GameRoomName;
-            Player1.Piece = gameFactory1.CreatePiece(player1).ToString();
+            Player1.Piece = gameFactory1.CreatePiece(player1);
 
             if (Player2 != null)
             {
                 Player2.PlayingRoomName = GameRoomName;
-                Player2.Piece = gameFactory2.CreatePiece(player1).ToString(); ;
+                Player2.Piece = gameFactory2.CreatePiece(player1);
             }
         }
 
@@ -124,7 +127,7 @@ namespace TicTacToe.GameObjects
         /// <param name="col">The column where the piece will be placed.</param>
         public void PlacePiece(int row, int col)
         {
-            string pieceToPlace = isFirstPlayersTurn ? Player1.Piece : Player2.Piece;
+            Decorator pieceToPlace = isFirstPlayersTurn ? Player1.Piece : Player2.Piece;
             Board.PlacePiece(row, col, pieceToPlace);
 
             isFirstPlayersTurn = !isFirstPlayersTurn;

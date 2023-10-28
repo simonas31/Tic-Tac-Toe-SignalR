@@ -37,11 +37,11 @@ namespace TicTacToe.Models
         /// regulate game instance obstacle activity
         /// </summary>
         /// <param name="change">change to obstacle activity</param>
-        public void Notify(bool change)
+        public void Notify()
         {
             for(int i = 0; i < observers.Count; i++)
             {
-                observers[i].Update(change);
+                observers[i].Update();
             }
         }
     }

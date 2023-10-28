@@ -50,7 +50,7 @@ namespace TicTacToe.Hubs
 				}
 				else
 				{
-					joiningPlayer.Piece = factory.CreatePiece(joiningPlayer).ToString();
+					joiningPlayer.Piece = factory.CreatePiece(joiningPlayer);
 					joiningGame.Player2 = joiningPlayer;
 
 					//GamePrototype gp = new GamePrototype(joiningGame);//this is for prototype. comment this.
@@ -125,7 +125,7 @@ namespace TicTacToe.Hubs
 			// Notify everyone of the valid move. Only send what is necessary (instead of sending whole board)
 			game.PlacePiece(row, col);
             await Groups.AddToGroupAsync(Context.ConnectionId, game.GameRoomName);
-            await Clients.Group(game.GameRoomName).SendAsync("piecePlaced", row, col, playerMakingTurn.Piece);
+            await Clients.Group(game.GameRoomName).SendAsync("piecePlaced", row, col, playerMakingTurn.Piece.operation(), playerMakingTurn.Piece.specificOperation());
 
             // check if game is over (won or tie)
             if (!game.IsOver)

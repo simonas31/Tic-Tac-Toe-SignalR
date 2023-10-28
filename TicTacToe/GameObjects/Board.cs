@@ -1,4 +1,5 @@
-﻿using TicTacToe.Interfaces;
+﻿using TicTacToe.Controllers;
+using TicTacToe.Interfaces;
 
 namespace TicTacToe.GameObjects
 {
@@ -69,9 +70,9 @@ namespace TicTacToe.GameObjects
         /// <param name="row">cordinate 1</param>
         /// <param name="col">cordinate 2</param>
         /// <param name="pieceToPlace">value to be placed</param>
-        public virtual void PlacePiece(int row, int col, string pieceToPlace)
+        public void PlacePiece(int row, int col, Decorator pieceToPlace)
         {
-            Pieces[row, col].Set(pieceToPlace);
+            Pieces[row, col].Set(pieceToPlace.operation());
             totalPiecesPlaced++;
         }
 

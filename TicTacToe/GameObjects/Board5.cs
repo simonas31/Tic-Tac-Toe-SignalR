@@ -1,4 +1,4 @@
-﻿using TicTacToe.Models;
+using TicTacToe.Models;
 
 namespace TicTacToe.GameObjects
 {
@@ -20,6 +20,12 @@ namespace TicTacToe.GameObjects
             }
         }
 
-        public override bool GameEnded => this.IsFiveInRow;
+        public override bool GameEnded
+        {
+            get
+            {
+                return this.winningStrategy.IsFiveInRow(Pieces);
+            }
+        }
     }
 }
