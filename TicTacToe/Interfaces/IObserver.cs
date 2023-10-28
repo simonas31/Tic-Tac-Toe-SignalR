@@ -1,5 +1,7 @@
-
-public interface IObserver
+namespace TicTacToe.Interfaces
 {
-    public void Update();
+    public interface IObserver
+    {
+        public void Update();
+    }
 }

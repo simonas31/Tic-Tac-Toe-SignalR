@@ -1,11 +1,11 @@
 using TicTacToe.Interfaces;
-namespace TicTacToe.Controllers
+namespace TicTacToe.Models.DecoratorPattern
 {
-    public class ConcreteDecoratorO : Decorator
+    public class ConcreteDecoratorX : Decorator
     {
-        public ConcreteDecoratorO(Component c) : base(c)
+        public ConcreteDecoratorX(Component c) : base(c)
         {
-
+            
         }
 
         public override string operation()
@@ -15,8 +15,9 @@ namespace TicTacToe.Controllers
 
         public override string specificOperation()
         {
-            return "green";
+            return "red";
         }
 
     }
 }
+

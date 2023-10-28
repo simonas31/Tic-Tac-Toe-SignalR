@@ -1,6 +1,9 @@
-﻿﻿using TicTacToe.Controllers;
+
+using TicTacToe.Controllers;
 using TicTacToe.GameObjects;
 using TicTacToe.Interfaces;
+using TicTacToe.Models.DecoratorPattern;
+
 namespace TicTacToe.Models
 {
     public class Player1Factory : GameFactory
@@ -21,3 +24,4 @@ namespace TicTacToe.Models
         }
     }
 }
+

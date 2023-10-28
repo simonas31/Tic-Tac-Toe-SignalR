@@ -1,6 +1,9 @@
-﻿﻿using TicTacToe.GameObjects;
+
+using TicTacToe.GameObjects;
 using TicTacToe.Controllers;
 using TicTacToe.Interfaces;
+using TicTacToe.Models.DecoratorPattern;
+
 
 public abstract class GameFactory
 {
