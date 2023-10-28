@@ -13,5 +13,10 @@ namespace TicTacToe.Models
         {
             return new Piece("X");
         }
+
+        public override Comment CreateComment()
+        {
+            return new Comment("#");
+        }
     }
 }

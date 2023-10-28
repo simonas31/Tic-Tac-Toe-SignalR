@@ -5,7 +5,7 @@ namespace TicTacToe.GameObjects
     /// <summary>
     /// Represents a Tic-Tac-Toe board and where players have placed their pieces.
     /// </summary>
-    public class Board
+    public class Board : ITicTacToeBoard
     {
         /// <summary>
         /// The number of pieces that have been placed on the board.
@@ -18,7 +18,7 @@ namespace TicTacToe.GameObjects
         /// <summary>
         /// Checks if game ended
         /// </summary>
-        public virtual bool GameEnded { get; }
+        public virtual bool GameEnded => false;
         public Board()
         {
             // TODO: Make the dimensions of the board constants
@@ -69,7 +69,7 @@ namespace TicTacToe.GameObjects
         /// <param name="row">cordinate 1</param>
         /// <param name="col">cordinate 2</param>
         /// <param name="pieceToPlace">value to be placed</param>
-        public void PlacePiece(int row, int col, string pieceToPlace)
+        public virtual void PlacePiece(int row, int col, string pieceToPlace)
         {
             Pieces[row, col].Set(pieceToPlace);
             totalPiecesPlaced++;

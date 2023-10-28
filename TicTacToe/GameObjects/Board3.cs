@@ -21,11 +21,5 @@ public class Board3 : Board
         }
     }
 
-    public override bool GameEnded
-    {
-        get
-        {
-            return this.IsThreeInRow;
-        }
-    }
+    public override bool GameEnded => this.IsThreeInRow;
 }
