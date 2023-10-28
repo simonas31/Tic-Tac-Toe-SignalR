@@ -86,5 +86,10 @@ namespace TicTacToe.Models
             return false;
         }
 
+        public bool IsSixInRow(Cell[,] pieces)
+        {
+
+            return false;
+        }
     }
 }

@@ -77,6 +77,18 @@ namespace TicTacToe.GameObjects
         }
 
         /// <summary>
+        /// update a cell with wanted value
+        /// </summary>
+        /// <param name="row">cordinate 1</param>
+        /// <param name="col">cordinate 2</param>
+        /// <param name="pieceToPlace">value to be placed</param>
+        public void PlacePiece(int row, int col, string pieceToPlace)
+        {
+            Pieces[row, col].Set(pieceToPlace);
+            totalPiecesPlaced++;
+        }
+
+        /// <summary>
         /// get all Cell values as a single string
         /// </summary>
         /// <returns>Cell values as a single string</returns>
