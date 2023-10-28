@@ -72,10 +72,14 @@ namespace TicTacToe.Models
             // Implement a method that always returns false for a 3x3 board.
             return false;
         }
-
         public bool IsFiveInRow(Cell[,] Pieces)
         {
-            // Implement a method that always returns false for a 3x3 board.
+
+            return false;
+        }
+        public bool IsSixInRow(Cell[,] Pieces)
+        {
+
             return false;
         }
     }

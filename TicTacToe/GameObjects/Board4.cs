@@ -1,3 +1,4 @@
+using TicTacToe.Interfaces;
 using TicTacToe.Models;
 
 namespace TicTacToe.GameObjects
@@ -20,11 +21,21 @@ namespace TicTacToe.GameObjects
             }
         }
 
-        public override bool GameEnded
+        public override bool GameEnded => this.IsFourInRow;
+        private Stack<IBoardCommand> commandHistory = new Stack<IBoardCommand>();
+
+        public void ExecuteCommand(IBoardCommand command)
         {
-            get
+            command.Execute(this);
+            commandHistory.Push(command);
+        }
+
+        public void UndoLastCommand()
+        {
+            if (commandHistory.Count > 0)
             {
-                return this.winningStrategy.IsFourInRow(Pieces);
+                IBoardCommand lastCommand = commandHistory.Pop();
+                lastCommand.Undo(this);
             }
         }
     }

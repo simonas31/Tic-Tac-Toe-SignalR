@@ -6,7 +6,7 @@ namespace TicTacToe.GameObjects
     /// <summary>
     /// Represents a Tic-Tac-Toe board and where players have placed their pieces.
     /// </summary>
-    public class Board
+    public class Board : ITicTacToeBoard
     {
         /// <summary>
         /// The number of pieces that have been placed on the board.
@@ -19,7 +19,7 @@ namespace TicTacToe.GameObjects
         /// <summary>
         /// Checks if game ended
         /// </summary>
-        public virtual bool GameEnded { get; }
+        public virtual bool GameEnded => false;
         public Board()
         {
             // TODO: Make the dimensions of the board constants

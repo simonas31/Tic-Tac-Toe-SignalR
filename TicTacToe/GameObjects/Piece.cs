@@ -1,6 +1,8 @@
-﻿namespace TicTacToe.GameObjects
+﻿using TicTacToe.Interfaces;
+
+namespace TicTacToe.GameObjects
 {
-    public class Piece : Cell
+    public class Piece : Cell, IPiece
     {
 
         public Piece(string value) : base(value)
@@ -16,6 +18,11 @@
         public string getStatus()
         {
             return "piece";
+        }
+
+        public string Move()
+        {
+            return "I Move";
         }
     }
 }

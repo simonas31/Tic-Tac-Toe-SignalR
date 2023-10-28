@@ -30,20 +30,20 @@ namespace TicTacToe.Models
                 }
             }
 
-            // Check forward-diagonal
-            if (Pieces[3, 0] != null && !string.IsNullOrWhiteSpace(Pieces[3, 0].Value) &&
-                Pieces[3, 0].Value == Pieces[2, 1].Value &&
-                Pieces[2, 1].Value == Pieces[1, 2].Value &&
-                Pieces[1, 2].Value == Pieces[3, 0].Value)
+            // Check diagonal from upper right to lower left
+            if (Pieces[1, 1] != null && !string.IsNullOrWhiteSpace(Pieces[1, 1].Value) &&
+                Pieces[0, 0].Value == Pieces[1, 1].Value &&
+                Pieces[1, 1].Value == Pieces[2, 2].Value &&
+                Pieces[2, 2].Value == Pieces[3, 3].Value)
             {
                 return true;
             }
 
-            // Check backward-diagonal
-            if (Pieces[0, 0] != null && !string.IsNullOrWhiteSpace(Pieces[0, 0].Value) &&
-                Pieces[0, 0].Value == Pieces[1, 1].Value &&
-                Pieces[1, 1].Value == Pieces[2, 2].Value &&
-                Pieces[2, 2].Value == Pieces[3, 3].Value)
+            // Check diagonal from upper left to lower right
+            if (Pieces[1, 2] != null && !string.IsNullOrWhiteSpace(Pieces[1, 2].Value) &&
+                Pieces[0, 3].Value == Pieces[1, 2].Value &&
+                Pieces[1, 2].Value == Pieces[2, 1].Value &&
+                Pieces[2, 1].Value == Pieces[3, 0].Value)
             {
                 return true;
             }
@@ -75,10 +75,14 @@ namespace TicTacToe.Models
             // Implement a method that always returns false for a 3x3 board.
             return false;
         }
-
-        public bool IsFiveInRow(Cell[,] Pieces)
+        public bool IsFiveInRow(Cell[,] pieces)
         {
-            // Implement a method that always returns false for a 3x3 board.
+            return false;
+        }
+
+        public bool IsSixInRow(Cell[,] pieces)
+        {
+
             return false;
         }
     }
