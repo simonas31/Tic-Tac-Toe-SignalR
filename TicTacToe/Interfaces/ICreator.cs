@@ -1,6 +1,7 @@
 using TicTacToe.GameObjects;
+using TicTacToe.Interfaces;
 
 public interface ICreator
 {
-    public Board FactoryMethod(int type);
+    public ITicTacToeBoard FactoryMethod(int type);
 }
