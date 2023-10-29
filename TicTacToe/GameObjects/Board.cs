@@ -106,32 +106,7 @@ namespace TicTacToe.GameObjects
 
             return string.Join(", ", piecesList);
         }
-        public class BoardBuilder : IBoardBuilder
-        {
-            private Board board;
-
-            public BoardBuilder()
-            {
-                board = new Board();
-            }
-
-            public IBoardBuilder SetDimensions(int dimensions)
-            {
-                board.Set(dimensions);
-                return this;
-            }
-
-            public IBoardBuilder WithCustomConfigurations()
-            {
-                // Add any custom configurations here
-                return this;
-            }
-
-            public Board Build()
-            {
-                return board;
-            }
-        }
+        
 
     }
 }
