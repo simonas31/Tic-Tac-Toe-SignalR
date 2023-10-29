@@ -1,17 +1,18 @@
 using TicTacToe.GameObjects;
+using TicTacToe.Interfaces;
 
 namespace TicTacToe.Models
 {
     public class Subject
     {
-        protected List<Obstacle> observers;
+        protected List<IObserver> observers;
 
         /// <summary>
         /// constructor
         /// </summary>
         public Subject()
         {
-            observers = new List<Obstacle>();
+            observers = new List<IObserver>();
         }
 
 
@@ -19,7 +20,7 @@ namespace TicTacToe.Models
         /// add obstacle to a game instace
         /// </summary>
         /// <param name="unit">specific obstacle to be added</param>
-        public void Attach(Obstacle unit)
+        public void Attach(IObserver unit)
         {
             observers.Add(unit);
         }
@@ -28,7 +29,7 @@ namespace TicTacToe.Models
         /// remove obstacle from game instance
         /// </summary>
         /// <param name="unit">specific obstacle to be removed</param>
-        public void Detach(Obstacle unit)
+        public void Detach(IObserver unit)
         {
             observers.Remove(unit);
         }
