@@ -1,5 +1,6 @@
 using TicTacToe.GameObjects;
 using TicTacToe.Interfaces;
+using TicTacToe.Models.Builder;
 
 namespace TicTacToe.Models;
 public class BoardCreator : ICreator
@@ -19,13 +20,15 @@ public class BoardCreator : ICreator
         {
             return new Board4();
         }
-        else if(type == 5)
+        else if (type == 5)
         {
-            return new Board5();
+            IBoardBuilder builder = new Board5Builder();
+            return builder.Build();
         }
         else if (type == 6)
         {
-            return new Board6();
+            IBoardBuilder builder = new Board6Builder();
+            return builder.Build();
         }
         else if (type == 9)
         {
