@@ -1,4 +1,5 @@
 using TicTacToe.GameObjects;
+using TicTacToe.Interfaces;
 
 namespace TicTacToe.Models
 {
@@ -11,7 +12,7 @@ namespace TicTacToe.Models
         /// </summary>
         public GameSubject() : base()
         {
-            observers = new List<Obstacle>();
+            observers = new List<IObserver>();
             state = true; 
         }
 
