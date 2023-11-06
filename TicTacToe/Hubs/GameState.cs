@@ -10,6 +10,7 @@ namespace TicTacToe.Hubs
     {
         // GameState Singleton
         private static GameState? _instance;
+        private static readonly object mLock = new object();
 
         private readonly ConcurrentDictionary<string, Player> players =
             new ConcurrentDictionary<string, Player>(StringComparer.OrdinalIgnoreCase);
@@ -24,9 +25,12 @@ namespace TicTacToe.Hubs
 
         public static GameState Instance
         {
-            get { 
-                if(_instance == null)
-                    _instance = new GameState();
+            get {
+                lock(mLock)
+                {
+                    if(_instance == null)
+                        _instance = new GameState();
+                }
 
                 return _instance;
             }

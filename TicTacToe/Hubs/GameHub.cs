@@ -4,6 +4,8 @@ using Newtonsoft.Json;
 using TicTacToe.GameObjects;
 using TicTacToe.Patterns.ForPrototype;
 using TicTacToe.Controllers;
+using TicTacToe.Patterns.Facade;
+using TicTacToe.Interfaces;
 
 namespace TicTacToe.Hubs
 {
@@ -54,11 +56,11 @@ namespace TicTacToe.Hubs
 					joiningPlayer.Piece = factory.CreatePiece(joiningPlayer);
 					joiningGame.Player2 = joiningPlayer;
 
-					//GamePrototype gp = new GamePrototype(joiningGame);//this is for prototype. comment this.
+					GamePrototype gp = new GamePrototype(joiningGame);//this is for prototype. comment this.
 
                     await Groups.AddToGroupAsync(Context.ConnectionId, joiningGame.GameRoomName);
                     await Clients.Group(joiningGame.GameRoomName).SendAsync("startGame", JsonConvert.SerializeObject(joiningGame));
-					//await Clients.Group(joiningGame.GameRoomName).SendAsync("showCloneDiff", JsonConvert.SerializeObject(gp));//this is for prototype. comment this.
+					await Clients.Group(joiningGame.GameRoomName).SendAsync("showCloneDiff", JsonConvert.SerializeObject(gp));//this is for prototype. comment this.
                 }
             }
         }
@@ -102,7 +104,9 @@ namespace TicTacToe.Hubs
         public async Task PlacePiece(int row, int col)
         {
 			Player playerMakingTurn = GameState.Instance.GetPlayer(playerId: this.Context.ConnectionId);
-			Game game = GameState.Instance.GetGame(playerMakingTurn);
+			TicTacToeFacade facade = new TicTacToeFacade(GameState.Instance, new BoardCreator(), new Game(new Player1Factory(), new Player("1", "2", "3"), "xxxxnono", 3, false));
+			//Game game = GameState.Instance.GetGame(playerMakingTurn);
+			Game game = facade.GetGame(playerMakingTurn);
 
 			if(game == null)
 			{

@@ -1,6 +1,8 @@
-﻿using TicTacToe.Interfaces;
+﻿using TicTacToe.Hubs;
+using TicTacToe.Interfaces;
 using TicTacToe.Models;
 using TicTacToe.Models.DecoratorPattern;
+using TicTacToe.Patterns.Facade;
 
 namespace TicTacToe.GameObjects
 {
@@ -18,8 +20,11 @@ namespace TicTacToe.GameObjects
             Player1 = player1;
             GameRoomName = roomName;
             ToggleObstacles = obstacles;
+            //uncomment this after showing Facade is working
             BoardCreator hold = new BoardCreator();
-            Board = hold.FactoryMethod(boardSize);
+            //Board = hold.FactoryMethod(boardSize);
+            TicTacToeFacade facade = new TicTacToeFacade(GameState.Instance, hold, this);
+            Board = facade.BuildBoard(boardSize);
 
             isFirstPlayersTurn = true;
 
@@ -39,8 +44,11 @@ namespace TicTacToe.GameObjects
             Player2 = player2;
             GameRoomName = roomName;
             ToggleObstacles = obstacles;
+            //uncomment this after showing Facade is working
             BoardCreator hold = new BoardCreator();
-            Board = hold.FactoryMethod(boardSize);
+            //Board = hold.FactoryMethod(boardSize);
+            TicTacToeFacade facade = new TicTacToeFacade(GameState.Instance, hold, this);
+            Board = facade.BuildBoard(boardSize);
 
             isFirstPlayersTurn = true;
 
