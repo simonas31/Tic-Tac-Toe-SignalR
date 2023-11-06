@@ -56,11 +56,11 @@ namespace TicTacToe.Hubs
 					joiningPlayer.Piece = factory.CreatePiece(joiningPlayer);
 					joiningGame.Player2 = joiningPlayer;
 
-					GamePrototype gp = new GamePrototype(joiningGame);//this is for prototype. comment this.
+					//GamePrototype gp = new GamePrototype(joiningGame);//this is for prototype. comment this.
 
                     await Groups.AddToGroupAsync(Context.ConnectionId, joiningGame.GameRoomName);
                     await Clients.Group(joiningGame.GameRoomName).SendAsync("startGame", JsonConvert.SerializeObject(joiningGame));
-					await Clients.Group(joiningGame.GameRoomName).SendAsync("showCloneDiff", JsonConvert.SerializeObject(gp));//this is for prototype. comment this.
+					//await Clients.Group(joiningGame.GameRoomName).SendAsync("showCloneDiff", JsonConvert.SerializeObject(gp));//this is for prototype. comment this.
                 }
             }
         }
