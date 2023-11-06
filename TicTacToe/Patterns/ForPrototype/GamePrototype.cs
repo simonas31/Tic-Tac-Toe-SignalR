@@ -1,4 +1,8 @@
-﻿using TicTacToe.GameObjects;
+﻿using System.Runtime.InteropServices;
+using TicTacToe.GameObjects;
+using TicTacToe.Hubs;
+using TicTacToe.Models;
+using TicTacToe.Patterns.Facade;
 
 namespace TicTacToe.Patterns.ForPrototype
 {
@@ -24,11 +28,13 @@ namespace TicTacToe.Patterns.ForPrototype
             this.OriginalPlayer1Room = original.Player1.PlayingRoomName;
             this.OriginalPlayer2Room = original.Player2.PlayingRoomName;
 
-            this.GameShallowCopy = GameOriginal.ShallowCopy();
-            this.GameDeepCopy = GameOriginal.DeepCopy();
+            TicTacToeFacade facade = new TicTacToeFacade(GameState.Instance, new BoardCreator(), this.GameOriginal);
+            (this.GameDeepCopy, this.GameShallowCopy) = facade.DeepAndShallowCopies();
+            //this.GameShallowCopy = GameOriginal.ShallowCopy();
+            //this.GameDeepCopy = GameOriginal.DeepCopy();
 
             //change for shallow copy
-            GameShallowCopy.Player1.PlayingRoomName = "Shallow Copy";
+            GameOriginal.Player1.PlayingRoomName = "Shallow Copy";
 
             //change for deep copy
             GameDeepCopy.Player2.PlayingRoomName = "Deep Copy";
