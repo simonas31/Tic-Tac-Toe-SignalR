@@ -8,9 +8,9 @@ namespace TicTacToe.Models
     {
         private int row;
         private int col;
-        private Cell piece;
+        private ICell piece;
 
-        private Cell previousPiece;
+        private ICell previousPiece;
 
         public PlacePieceCommand(int row, int col, Cell piece)
         {

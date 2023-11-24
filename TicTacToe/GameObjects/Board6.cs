@@ -6,7 +6,7 @@ namespace TicTacToe.GameObjects
     {
         private IWinningStrategy winningStrategy;
 
-        public Board6()
+        public Board6(CellFactory cellFactory) : base(cellFactory)
         {
             Set(6);
             winningStrategy = new SixBySixWinningStrategy();

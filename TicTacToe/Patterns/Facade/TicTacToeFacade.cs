@@ -33,9 +33,9 @@ namespace TicTacToe.Patterns.Facade
         /// </summary>
         /// <param name="type">size of the board</param>
         /// <returns>Board</returns>
-        public ITicTacToeBoard BuildBoard(int type)
+        public ITicTacToeBoard BuildBoard(int type, CellFactory cellFactory)
         {
-            return BoardCreator.FactoryMethod(type);
+            return BoardCreator.FactoryMethod(type, cellFactory);
         }
 
         /// <summary>

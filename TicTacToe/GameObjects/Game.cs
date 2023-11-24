@@ -24,7 +24,8 @@ namespace TicTacToe.GameObjects
             BoardCreator hold = new BoardCreator();
             //Board = hold.FactoryMethod(boardSize);
             TicTacToeFacade facade = new TicTacToeFacade(GameState.Instance, hold, this);
-            Board = facade.BuildBoard(boardSize);
+            CellFactory cellFactory = new CellFactory();
+            Board = facade.BuildBoard(boardSize, cellFactory);
 
             isFirstPlayersTurn = true;
 
@@ -48,7 +49,8 @@ namespace TicTacToe.GameObjects
             BoardCreator hold = new BoardCreator();
             //Board = hold.FactoryMethod(boardSize);
             TicTacToeFacade facade = new TicTacToeFacade(GameState.Instance, hold, this);
-            Board = facade.BuildBoard(boardSize);
+            CellFactory cellFactory = new CellFactory();
+            Board = facade.BuildBoard(boardSize, cellFactory);
 
             isFirstPlayersTurn = true;
 

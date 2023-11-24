@@ -3,5 +3,5 @@ using TicTacToe.Interfaces;
 
 public interface ICreator
 {
-    public ITicTacToeBoard FactoryMethod(int type);
+    public ITicTacToeBoard FactoryMethod(int type, CellFactory cellFactory);
 }

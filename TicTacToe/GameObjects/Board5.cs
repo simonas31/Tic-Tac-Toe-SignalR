@@ -1,4 +1,3 @@
-using TicTacToe.Models;
 using TicTacToe.Models.Strategy;
 
 namespace TicTacToe.GameObjects
@@ -7,7 +6,8 @@ namespace TicTacToe.GameObjects
     {
         private IWinningStrategy winningStrategy;
 
-        public Board5()
+        // Constructor modified to use CellFactory
+        public Board5(CellFactory cellFactory) : base(cellFactory)
         {
             Set(5);
             winningStrategy = new FiveByFiveWinningStrategy();

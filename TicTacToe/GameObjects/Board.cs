@@ -1,5 +1,7 @@
 ﻿using TicTacToe.Interfaces;
 using TicTacToe.Models.DecoratorPattern;
+using System;
+using System.Collections.Generic;
 
 namespace TicTacToe.GameObjects
 {
@@ -8,28 +10,34 @@ namespace TicTacToe.GameObjects
     /// </summary>
     public class Board : ITicTacToeBoard
     {
+        private CellFactory cellFactory;
+
         /// <summary>
         /// The number of pieces that have been placed on the board.
         /// </summary>
         private int totalPiecesPlaced { get; set; }
+
         /// <summary>
         /// Size of the board 3, 4, 5
         /// </summary>
         public int BoardSize { get; set; }
+
         /// <summary>
-        /// Checks if game ended
+        /// Checks if the game has ended
         /// </summary>
         public virtual bool GameEnded => false;
-        public Board()
+
+        public Board(CellFactory cellFactory)
         {
             // TODO: Make the dimensions of the board constants
-            Pieces = new Cell[BoardSize, BoardSize];
-            Cell cell = new Cell();
+            this.cellFactory = cellFactory;
+            Pieces = new ICell[BoardSize, BoardSize];
+
             for (int i = 0; i < BoardSize; i++)
             {
                 for (int j = 0; j < BoardSize; j++)
                 {
-                    Pieces[i, j] = cell;
+                    Pieces[i, j] = cellFactory.GetCell(i, j);
                 }
             }
         }
@@ -38,17 +46,17 @@ namespace TicTacToe.GameObjects
         /// Represents the pieces on the board.
         /// Must be publicly accessible to allow serialization.
         /// </summary>
-        public Cell[,] Pieces { get; private set; }
+        public ICell[,] Pieces { get; private set; }
 
         protected void Set(int n)
         {
             BoardSize = n;
-            Pieces = new Cell[n, n];
+            Pieces = new ICell[n, n];
             for (int i = 0; i < n; i++)
             {
                 for (int j = 0; j < n; j++)
                 {
-                    Pieces[i, j] = new Cell();
+                    Pieces[i, j] = cellFactory.GetCell(i, j);
                 }
             }
         }
@@ -65,31 +73,35 @@ namespace TicTacToe.GameObjects
         }
 
         /// <summary>
-        /// update a cell with wanted value
+        /// Update a cell with wanted value.
         /// </summary>
-        /// <param name="row">cordinate 1</param>
-        /// <param name="col">cordinate 2</param>
-        /// <param name="pieceToPlace">value to be placed</param>
+        /// <param name="row">Coordinate 1</param>
+        /// <param name="col">Coordinate 2</param>
+        /// <param name="pieceToPlace">Value to be placed</param>
         public void PlacePiece(int row, int col, Decorator pieceToPlace)
         {
-            Pieces[row, col].Set(pieceToPlace.operation());
+            // Use the CellFactory to get the cell instance
+            ICell cell = cellFactory.GetCell(row, col);
+
+            // Set the value of the cell using the pieceToPlace
+            cell.Set(pieceToPlace.operation());
+
             totalPiecesPlaced++;
         }
 
-        /// <summary>
-        /// update a cell with wanted value
-        /// </summary>
-        /// <param name="row">cordinate 1</param>
-        /// <param name="col">cordinate 2</param>
-        /// <param name="pieceToPlace">value to be placed</param>
         public void PlacePiece(int row, int col, string pieceToPlace)
         {
-            Pieces[row, col].Set(pieceToPlace);
+            // Use the CellFactory to get the cell instance
+            ICell cell = cellFactory.GetCell(row, col);
+
+            // Set the value of the cell using the pieceToPlace
+            cell.Set(pieceToPlace);
+
             totalPiecesPlaced++;
         }
 
         /// <summary>
-        /// get all Cell values as a single string
+        /// Get all Cell values as a single string.
         /// </summary>
         /// <returns>Cell values as a single string</returns>
         public override string ToString()
@@ -106,7 +118,5 @@ namespace TicTacToe.GameObjects
 
             return string.Join(", ", piecesList);
         }
-        
-
     }
 }

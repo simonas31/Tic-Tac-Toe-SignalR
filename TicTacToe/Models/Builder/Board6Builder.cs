@@ -7,9 +7,9 @@ namespace TicTacToe.Models.Builder
     {
         private Board6 board;
 
-        public Board6Builder()
+        public Board6Builder(CellFactory cellFactory)
         {
-            board = new Board6();
+            board = new Board6(cellFactory);
         }
 
         public IBoardBuilder SetDimensions(int dimensions)

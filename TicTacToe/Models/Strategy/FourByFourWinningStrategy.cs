@@ -4,7 +4,7 @@ namespace TicTacToe.Models
 {
     public class FourByFourWinningStrategy : IWinningStrategy
     {
-        public bool IsFourInRow(Cell[,] Pieces)
+        public bool IsFourInRow(ICell[,] Pieces)
         {
             // Check all rows
             for (int row = 0; row < Pieces.GetLength(0); row++)
@@ -51,7 +51,7 @@ namespace TicTacToe.Models
             return false;
         }
 
-        public bool IsBoardFull(Cell[,] Pieces)
+        public bool IsBoardFull(ICell[,] Pieces)
         {
             for (int row = 0; row < Pieces.GetLength(0); row++)
             {
@@ -66,21 +66,21 @@ namespace TicTacToe.Models
             return true;
         }
 
-        public bool IsGameOver(Cell[,] Pieces)
+        public bool IsGameOver(ICell[,] Pieces)
         {
             return IsFourInRow(Pieces) || IsBoardFull(Pieces);
         }
-        public bool IsThreeInRow(Cell[,] pieces)
+        public bool IsThreeInRow(ICell[,] pieces)
         {
             // Implement a method that always returns false for a 3x3 board.
             return false;
         }
-        public bool IsFiveInRow(Cell[,] pieces)
+        public bool IsFiveInRow(ICell[,] pieces)
         {
             return false;
         }
 
-        public bool IsSixInRow(Cell[,] pieces)
+        public bool IsSixInRow(ICell[,] pieces)
         {
 
             return false;

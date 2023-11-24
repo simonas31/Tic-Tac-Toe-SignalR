@@ -7,7 +7,7 @@ public class Board3 : Board
 {
     private IWinningStrategy winningStrategy;
 
-    public Board3()
+    public Board3(CellFactory cellFactory) : base(cellFactory)
     {
         Set(3);
         winningStrategy = new ThreeByThreeWinningStrategy();

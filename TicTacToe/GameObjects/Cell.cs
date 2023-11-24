@@ -1,52 +1,60 @@
 namespace TicTacToe.GameObjects
 {
-    public class Cell
+    // Flyweight: Common interface for concrete flyweights
+    public interface ICell
+    {
+        string Value { get; set; }
+        string GetStatus();
+        void Set(string v);
+    }
+
+    // Concrete Flyweight: Represents the intrinsic state of a cell
+    public class Cell : ICell
     {
         public string Value { get; set; }
 
-        /// <summary>
-        /// constructor
-        /// </summary>
         public Cell()
         {
             Value = "";
         }
 
-        /// <summary>
-        /// constructor
-        /// </summary>
-        /// <param name="value"></param>
         public Cell(string value)
         {
             Value = value;
         }
 
-        /// <summary>
-        /// sets value outside contructor
-        /// </summary>
-        /// <param name="value">cell value</param>
         public void Set(string value)
         {
             Value = value;
         }
 
-
-        /// <summary>
-        /// get status if cell is itself or it's child classes
-        /// </summary>
-        /// <returns>status that it's Cell class</returns>
-        public string getStatus()
+        public string GetStatus()
         {
             return "general";
         }
 
-        /// <summary>
-        /// get cell value
-        /// </summary>
-        /// <returns>cell value</returns>
         public override string ToString()
         {
             return Value;
+        }
+    }
+
+    // Flyweight Factory: Creates and manages flyweight objects
+    public class CellFactory
+    {
+        private Dictionary<string, ICell> cellPool = new Dictionary<string, ICell>();
+
+        public ICell GetCell(int row, int column)
+        {
+            string key = $"{row}-{column}";
+
+            if (!cellPool.TryGetValue(key, out ICell cell))
+            {
+                cell = new Cell();
+                cellPool[key] = cell;
+            }
+
+            return cell;
         }
     }
 }

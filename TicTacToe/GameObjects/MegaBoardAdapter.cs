@@ -15,7 +15,7 @@ namespace TicTacToe.GameObjects
         }
 
         public bool GameEnded => _adapter.IsGameOver();
-        public Cell[,] Pieces
+        public ICell[,] Pieces
         {
             get
             {

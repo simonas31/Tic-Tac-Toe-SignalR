@@ -10,24 +10,24 @@ public class BoardCreator : ICreator
     /// </summary>
     /// <param name="type">dimensions for the board</param>
     /// <returns></returns>
-    public ITicTacToeBoard FactoryMethod(int type)
+    public ITicTacToeBoard FactoryMethod(int type, CellFactory cellFactory)
     {
         if(type == 3)
         {
-            return new Board3();
+            return new Board3(cellFactory);
         }
         else if (type == 4)
         {
-            return new Board4();
+            return new Board4(cellFactory);
         }
         else if (type == 5)
         {
-            IBoardBuilder builder = new Board5Builder();
+            IBoardBuilder builder = new Board5Builder(cellFactory);
             return builder.Build();
         }
         else if (type == 6)
         {
-            IBoardBuilder builder = new Board6Builder();
+            IBoardBuilder builder = new Board6Builder(cellFactory);
             return builder.Build();
         }
         else if (type == 9)

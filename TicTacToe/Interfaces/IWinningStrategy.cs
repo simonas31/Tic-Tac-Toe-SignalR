@@ -2,8 +2,8 @@
 
 public interface IWinningStrategy
 {
-    bool IsThreeInRow(Cell[,] Pieces); // For 3x3 board
-    bool IsFourInRow(Cell[,] Pieces);  // For 4x4 board
-    bool IsFiveInRow(Cell[,] Pieces);  // For 5x5 board
-    bool IsSixInRow(Cell[,] Pieces);  // For 6x6 board
+    bool IsThreeInRow(ICell[,] Pieces); // For 3x3 board
+    bool IsFourInRow(ICell[,] Pieces);  // For 4x4 board
+    bool IsFiveInRow(ICell[,] Pieces);  // For 5x5 board
+    bool IsSixInRow(ICell[,] Pieces);  // For 6x6 board
 }
