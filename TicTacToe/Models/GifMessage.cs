@@ -5,6 +5,7 @@ namespace TicTacToe.Models
 {
     public class GifMessage : Message
     {
+        public GifMessage() { }
         public GifMessage(MessageData message) 
         {
             this.SendTime = message.SendTime;

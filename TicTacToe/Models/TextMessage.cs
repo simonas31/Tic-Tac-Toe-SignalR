@@ -4,6 +4,7 @@ namespace TicTacToe.Models
 {
     public class TextMessage : Message
     {
+        public TextMessage() { }
         public TextMessage(MessageData message)
         {
             this.SendTime = message.SendTime;

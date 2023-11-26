@@ -15,11 +15,11 @@ namespace TicTacToe.Hubs
             Message msg;
             if(msgData?.Image != null)
             {
-                msg = new GifMessage(msgData);
+                msg = new GifMessage();
             }
             else
             {
-                msg = new TextMessage(msgData);
+                msg = new TextMessage();
             }
             await Clients.All.SendAsync("ReceiveMessage", msg.BuildMessage(msgData));
         }
