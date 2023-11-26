@@ -16,5 +16,10 @@ namespace TicTacToe.Models
         {
             return false;
         }
+
+        public override string ToString()
+        {
+            return String.Format("Send Time:{0} | Sender name:{1} | Text:{2}", this.SendTime, this.SenderName, this.Text);
+        }
     }
 }
