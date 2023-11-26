@@ -1,12 +1,4 @@
 ﻿$(function () {
-    class Message {
-        constructor(name, text, sendtime) {
-            this.SenderName = name;
-            this.Text = text;
-            this.SendTime = sendtime;
-        }
-    }
-
     //jquery variables
     const textInput = $('#messageInput');
     const chat = $('#chat');
@@ -14,7 +6,10 @@
     const username = $('#username');
     const messagesQueue = [];
 
-    var chatHub = new signalR.HubConnectionBuilder().withUrl("/chatHub").build();
+    var chatHub = new signalR.HubConnectionBuilder()
+        .configureLogging(signalR.LogLevel.Information)
+        .withUrl("/chatHub")
+        .build();
 
     sendMessageBtn.attr('disabled', 'disabled');
 
@@ -63,10 +58,10 @@
         };
 
         var formattedDate = currentDate.toLocaleString('en-US', options);
-        let msg = new Message(username.val(), textInput.val(), formattedDate);
+        let msg = { SendTime: formattedDate, SenderName: username.val(), Image: null, Text: textInput.val() };
         textInput.val("");
 
-        chatHub.invoke('SendMessage', msg);
+        chatHub.invoke('SendMessage', JSON.stringify(msg));
     }
 
     function addMessageToChat(message) {
