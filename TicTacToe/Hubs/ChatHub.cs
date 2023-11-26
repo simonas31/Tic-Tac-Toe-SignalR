@@ -8,6 +8,7 @@ namespace TicTacToe.Hubs
 {
     public class ChatHub : Hub
     {
+
         //create storage to check existing names and dont let user enter existing name.
         public async Task SendMessage(string message)
         {
