@@ -184,5 +184,10 @@ namespace TicTacToe.GameObjects
             player2.Piece = this.Player2.Piece;
             return new Game(player1Factory, player2Factory, player1, player2, this.GameRoomName, this.Board.BoardSize, this.ToggleObstacles);
         }
+
+        public int BoardSize()
+        {
+            return Board.BoardSize;
+        }
     }
 }
