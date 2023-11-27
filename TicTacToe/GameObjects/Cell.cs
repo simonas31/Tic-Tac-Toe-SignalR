@@ -1,6 +1,8 @@
+using TicTacToe.Interfaces;
+
 namespace TicTacToe.GameObjects
 {
-    public class Cell
+    public class Cell : ISubject
     {
         public string Value { get; set; }
 
@@ -47,6 +49,16 @@ namespace TicTacToe.GameObjects
         public override string ToString()
         {
             return Value;
+        }
+
+        public string requestValue()
+        {
+            return Value;
+        }
+
+        public void requestUpdate(string value)
+        {
+            Set(value);
         }
     }
 }

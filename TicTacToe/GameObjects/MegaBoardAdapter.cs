@@ -9,13 +9,13 @@ namespace TicTacToe.GameObjects
     {
         private MegaTicTacToeHelper _adapter;
 
-        public MegaBoardAdapter(Cell[,] megaBoard)
+        public MegaBoardAdapter(Proxy[,] megaBoard)
         {
             _adapter = new MegaTicTacToeHelper(megaBoard);
         }
 
         public bool GameEnded => _adapter.IsGameOver();
-        public Cell[,] Pieces
+        public Proxy[,] Pieces
         {
             get
             {
@@ -33,7 +33,7 @@ namespace TicTacToe.GameObjects
                 {
                     for (int j = 0; j < BoardSize; j++)
                     {
-                        if (string.IsNullOrWhiteSpace(Pieces[i, j].Value))
+                        if (string.IsNullOrWhiteSpace(Pieces[i, j].requestValue()))
                         {
                             return true;
                         }

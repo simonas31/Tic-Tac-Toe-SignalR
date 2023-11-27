@@ -10,7 +10,7 @@ namespace TicTacToe.Models
         private int col;
         private Cell piece;
 
-        private Cell previousPiece;
+        private Proxy previousPiece;
 
         public PlacePieceCommand(int row, int col, Cell piece)
         {
@@ -27,7 +27,7 @@ namespace TicTacToe.Models
 
         public void Undo(Board4 board)
         {
-            board.PlacePiece(row, col, previousPiece.Value); // Use previousPiece.Value here
+            board.PlacePiece(row, col, previousPiece.requestValue()); // Use previousPiece.Value here
         }
 
     }

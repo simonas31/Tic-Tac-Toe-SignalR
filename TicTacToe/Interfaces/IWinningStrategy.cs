@@ -1,9 +1,9 @@
 ﻿using TicTacToe.GameObjects;
-
+using TicTacToe.Models;
 public interface IWinningStrategy
 {
-    bool IsThreeInRow(Cell[,] Pieces); // For 3x3 board
-    bool IsFourInRow(Cell[,] Pieces);  // For 4x4 board
-    bool IsFiveInRow(Cell[,] Pieces);  // For 5x5 board
-    bool IsSixInRow(Cell[,] Pieces);  // For 6x6 board
+    bool IsThreeInRow(Proxy[,] Pieces); // For 3x3 board
+    bool IsFourInRow(Proxy[,] Pieces);  // For 4x4 board
+    bool IsFiveInRow(Proxy[,] Pieces);  // For 5x5 board
+    bool IsSixInRow(Proxy[,] Pieces);  // For 6x6 board
 }

@@ -9,7 +9,7 @@ namespace TicTacToe.Interfaces
         bool GameEnded { get; }
         void PlacePiece(int row, int col, Decorator pieceToPlace);
 
-        Cell[,] Pieces { get; }
+        Proxy[,] Pieces { get; }
         bool AreSpacesLeft { get; }
         int BoardSize {  get; }
     }
