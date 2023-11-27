@@ -23,8 +23,8 @@ namespace TicTacToe.GameObjects
         public Board()
         {
             // TODO: Make the dimensions of the board constants
-            Pieces = new Cell[BoardSize, BoardSize];
-            Cell cell = new Cell();
+            Pieces = new Proxy[BoardSize, BoardSize];
+            Proxy cell = new Proxy();
             for (int i = 0; i < BoardSize; i++)
             {
                 for (int j = 0; j < BoardSize; j++)
@@ -38,17 +38,17 @@ namespace TicTacToe.GameObjects
         /// Represents the pieces on the board.
         /// Must be publicly accessible to allow serialization.
         /// </summary>
-        public Cell[,] Pieces { get; private set; }
+        public Proxy[,] Pieces { get; private set; }
 
         protected void Set(int n)
         {
             BoardSize = n;
-            Pieces = new Cell[n, n];
+            Pieces = new Proxy[n, n];
             for (int i = 0; i < n; i++)
             {
                 for (int j = 0; j < n; j++)
                 {
-                    Pieces[i, j] = new Cell();
+                    Pieces[i, j] = new Proxy();
                 }
             }
         }
@@ -72,7 +72,7 @@ namespace TicTacToe.GameObjects
         /// <param name="pieceToPlace">value to be placed</param>
         public void PlacePiece(int row, int col, Decorator pieceToPlace)
         {
-            Pieces[row, col].Set(pieceToPlace.operation());
+            Pieces[row, col].requestUpdate(pieceToPlace.operation());
             totalPiecesPlaced++;
         }
 
@@ -84,7 +84,7 @@ namespace TicTacToe.GameObjects
         /// <param name="pieceToPlace">value to be placed</param>
         public void PlacePiece(int row, int col, string pieceToPlace)
         {
-            Pieces[row, col].Set(pieceToPlace);
+            Pieces[row, col].requestUpdate(pieceToPlace);
             totalPiecesPlaced++;
         }
 
@@ -100,7 +100,7 @@ namespace TicTacToe.GameObjects
             {
                 for (int j = 0; j < Pieces.GetLength(1); j++)
                 {
-                    piecesList.Add(Pieces[i, j].Value);
+                    piecesList.Add(Pieces[i, j].requestValue());
                 }
             }
 

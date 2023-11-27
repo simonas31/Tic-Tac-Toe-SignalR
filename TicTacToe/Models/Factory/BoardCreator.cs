@@ -32,12 +32,12 @@ public class BoardCreator : ICreator
         }
         else if (type == 9)
         {
-            Cell[,] megaBoard = new Cell[9, 9];
+            Proxy[,] megaBoard = new Proxy[9, 9];
             for (int i = 0; i < 9; i++)
             {
                 for (int j = 0; j < 9; j++)
                 {
-                    megaBoard[i, j] = new Cell(); // or initialize it with some default value if required
+                    megaBoard[i, j] = new Proxy(); // or initialize it with some default value if required
                 }
             }
             return new MegaBoardAdapter(megaBoard);

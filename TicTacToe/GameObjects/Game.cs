@@ -154,7 +154,7 @@ namespace TicTacToe.GameObjects
             // TODO: Make the board dimensions public properties
             bool cond1 = row < Board.Pieces.GetLength(0);
             bool cond2 = col < Board.Pieces.GetLength(1);
-            bool cond3 = string.IsNullOrWhiteSpace(Board.Pieces[row, col].Value);
+            bool cond3 = string.IsNullOrWhiteSpace(Board.Pieces[row, col].requestValue());
 
 
             return
