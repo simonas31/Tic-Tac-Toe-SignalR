@@ -2,27 +2,18 @@
 
 namespace TicTacToe.GameObjects
 {
-    public class Piece : Cell, IPiece
+    public class Piece
     {
+        public string Value { get; private set; }
 
-        public Piece(string value) : base(value)
+        public Piece(string value)
         {
-            Set(value);
+            Value = value;
         }
 
         public override string ToString()
         {
             return Value;
-        }
-
-        public string getStatus()
-        {
-            return "piece";
-        }
-
-        public string Move()
-        {
-            return "I Move";
         }
     }
 }

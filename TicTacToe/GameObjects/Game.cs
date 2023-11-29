@@ -135,7 +135,7 @@ namespace TicTacToe.GameObjects
         /// <param name="col">The column where the piece will be placed.</param>
         public void PlacePiece(int row, int col)
         {
-            Decorator pieceToPlace = isFirstPlayersTurn ? Player1.Piece : Player2.Piece;
+            Piece pieceToPlace = isFirstPlayersTurn ? Player1.Piece : Player2.Piece;
             Board.PlacePiece(row, col, pieceToPlace);
 
             isFirstPlayersTurn = !isFirstPlayersTurn;

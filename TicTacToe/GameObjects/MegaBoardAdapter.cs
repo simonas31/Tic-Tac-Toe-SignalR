@@ -52,9 +52,9 @@ namespace TicTacToe.GameObjects
             }
         }
 
-        public void PlacePiece(int row, int col, Decorator pieceToPlace)
+        public void PlacePiece(int row, int col, Piece pieceToPlace)
         {
-            _adapter.MakeMove(row, col, pieceToPlace.operation());
+            _adapter.MakeMove(row, col, pieceToPlace.Value);
         }
     }
 }
