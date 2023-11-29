@@ -7,7 +7,7 @@ namespace TicTacToe.Interfaces
     public interface ITicTacToeBoard
     {
         bool GameEnded { get; }
-        void PlacePiece(int row, int col, Decorator pieceToPlace);
+        void PlacePiece(int row, int col, Piece pieceToPlace);
 
         Proxy[,] Pieces { get; }
         bool AreSpacesLeft { get; }

@@ -1,5 +1,6 @@
 ﻿using TicTacToe.Interfaces;
 using TicTacToe.Models.DecoratorPattern;
+using TicTacToe.Models.Flyweight;
 
 namespace TicTacToe.GameObjects
 {
@@ -70,9 +71,9 @@ namespace TicTacToe.GameObjects
         /// <param name="row">cordinate 1</param>
         /// <param name="col">cordinate 2</param>
         /// <param name="pieceToPlace">value to be placed</param>
-        public void PlacePiece(int row, int col, Decorator pieceToPlace)
+        public void PlacePiece(int row, int col, Piece pieceToPlace)
         {
-            Pieces[row, col].requestUpdate(pieceToPlace.operation());
+            Pieces[row, col].requestUpdate(pieceToPlace.Value);
             totalPiecesPlaced++;
         }
 
@@ -82,9 +83,10 @@ namespace TicTacToe.GameObjects
         /// <param name="row">cordinate 1</param>
         /// <param name="col">cordinate 2</param>
         /// <param name="pieceToPlace">value to be placed</param>
-        public void PlacePiece(int row, int col, string pieceToPlace)
+        public void PlacePiece(int row, int col, string pieceType)
         {
-            Pieces[row, col].requestUpdate(pieceToPlace);
+            Piece piece = PieceFactory.GetPiece(pieceType);
+            Pieces[row, col].requestUpdate(piece.ToString());
             totalPiecesPlaced++;
         }
 

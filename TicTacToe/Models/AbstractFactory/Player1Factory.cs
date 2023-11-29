@@ -3,6 +3,7 @@ using TicTacToe.Controllers;
 using TicTacToe.GameObjects;
 using TicTacToe.Interfaces;
 using TicTacToe.Models.DecoratorPattern;
+using TicTacToe.Models.Flyweight;
 
 namespace TicTacToe.Models
 {
@@ -13,9 +14,9 @@ namespace TicTacToe.Models
             return new Obstacle("W");
         }
 
-        public override Decorator CreatePiece(Player player)
+        public override Piece CreatePiece(Player player)
         {
-            return new ConcreteDecoratorX(new X("X"));
+            return PieceFactory.GetPiece("X");
         }
 
         public override IComment CreateComment()

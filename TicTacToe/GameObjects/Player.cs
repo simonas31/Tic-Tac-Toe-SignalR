@@ -40,12 +40,11 @@ namespace TicTacToe.GameObjects
         /// The game will decide the game piece.
         /// </summary>
         // public string Piece { get; set; }
-        public Decorator Piece {get; set;}
+        public Piece Piece {get; set;}
 
         public override string ToString()
         {
-            return string.Format("(Id={0}, Name={1}, GameId={2}, Piece={3})",
-                Id, Name, PlayingRoomName, Piece.operation());
+            return $"(Id={Id}, Name={Name}, GameId={PlayingRoomName}, Piece={Piece})";
         }
 
         public override bool Equals(object obj)
