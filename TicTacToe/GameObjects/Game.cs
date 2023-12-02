@@ -176,8 +176,8 @@ namespace TicTacToe.GameObjects
 
         public Game DeepCopy()
         {
-            GameFactory player1Factory = new Player1Factory();
-            GameFactory player2Factory = new Player2Factory();
+            GameFactory player1Factory = new Player1Factory(new ConcreteMediator());
+            GameFactory player2Factory = new Player2Factory(new ConcreteMediator());
             Player player1 = new Player(Player1.Name, Player1.PlayingRoomName, Player1.Id);
             player1.Piece = this.Player1.Piece;
             Player player2 = new Player(Player2.Name, Player2.PlayingRoomName, Player2.Id);
