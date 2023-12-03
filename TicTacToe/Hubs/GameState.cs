@@ -125,7 +125,7 @@ namespace TicTacToe.Hubs
 
         public async Task<Game> CreateGame(Player firstPlayer, IGroupManager groupManager, string roomName, int boardSize, bool obstacles)
         {
-            GameFactory gameFactory = new Player1Factory();
+            GameFactory gameFactory = new Player1Factory(new ConcreteMediator());
             Game game = new Game(gameFactory, firstPlayer, roomName, boardSize, obstacles);
             this.games[game.GameRoomName] = game;
 

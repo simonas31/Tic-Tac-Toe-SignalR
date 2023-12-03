@@ -36,7 +36,7 @@ namespace TicTacToe.Hubs
 
             // Find any pending games if any
             Player opponent = GameState.Instance.GetWaitingOpponent(roomName);//add parameter roomName
-            Player2Factory factory = new Player2Factory();
+            Player2Factory factory = new Player2Factory(new ConcreteMediator());
             if (opponent == null)
 			{
 				//No waiting players so enter the waiting pool
@@ -104,7 +104,7 @@ namespace TicTacToe.Hubs
         public async Task PlacePiece(int row, int col)
         {
 			Player playerMakingTurn = GameState.Instance.GetPlayer(playerId: this.Context.ConnectionId);
-			TicTacToeFacade facade = new TicTacToeFacade(GameState.Instance, new BoardCreator(), new Game(new Player1Factory(), new Player("1", "2", "3"), "xxxxnono", 3, false));
+			TicTacToeFacade facade = new TicTacToeFacade(GameState.Instance, new BoardCreator(), new Game(new Player1Factory(new ConcreteMediator()), new Player("1", "2", "3"), "xxxxnono", 3, false));
 			//Game game = GameState.Instance.GetGame(playerMakingTurn);
 			Game game = facade.GetGame(playerMakingTurn);
 
@@ -130,8 +130,9 @@ namespace TicTacToe.Hubs
 			// Notify everyone of the valid move. Only send what is necessary (instead of sending whole board)
 			game.PlacePiece(row, col);
             await Groups.AddToGroupAsync(Context.ConnectionId, game.GameRoomName);
-			Handler h = new BoardSizeHandler();
-			string[] chain = h.handleRequest(new string[] { game.BoardSize().ToString(), col.ToString(), row.ToString(), game.ToggleObstacles.ToString() }).Split(':');
+			ConcreteMediator mediator = new ConcreteMediator();
+			mediator.setHandler(new BoardSizeHandler(mediator));
+			string[] chain = mediator.callHandler( new Player("","", "") ,new string[] { game.BoardSize().ToString(), col.ToString(), row.ToString(), game.ToggleObstacles.ToString() }).Split(':');
             await Clients.Group(game.GameRoomName).SendAsync("piecePlaced", row, col, playerMakingTurn.Piece.Value, playerMakingTurn.Piece.Value, chain[0], chain[1], chain[2], chain[3]);
 
             // check if game is over (won or tie)

@@ -6,9 +6,10 @@ public class RowHandler: Handler
 {
     private Handler successor {get; set;}
 
-    public RowHandler()
+    public RowHandler(Mediator Hub) : base(Hub)
     {
-        successor = new ObstaclesHandler();
+        successor = new ObstaclesHandler(Hub);
+        hub = Hub;
     }
 
     public override string handleRequest(string[] info)
@@ -28,5 +29,15 @@ public class RowHandler: Handler
         {
             return "";
         }
+    }
+
+    public override void SendMessage()
+    {
+        throw new NotImplementedException();
+    }
+
+    public override (string, Piece) ReceiveMessage(Player player, string[] info)
+    {
+        throw new NotImplementedException();
     }
 }
