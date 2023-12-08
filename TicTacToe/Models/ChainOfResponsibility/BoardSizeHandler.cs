@@ -6,9 +6,9 @@ public class BoardSizeHandler: Handler
 {
     private Handler successor {get; set;}
 
-    public BoardSizeHandler()
+    public BoardSizeHandler(Mediator Hub) : base(Hub)
     {
-        successor = new CollumnHandler();
+        successor = new CollumnHandler(Hub);
     }
 
     public override string handleRequest(string[] info)
@@ -28,5 +28,15 @@ public class BoardSizeHandler: Handler
         {
             return "";
         }
+    }
+
+    public override void SendMessage()
+    {
+        throw new NotImplementedException();
+    }
+
+    public override (string, Piece) ReceiveMessage(Player player, string[] info)
+    {
+        return (handleRequest(info), new Piece(""));
     }
 }

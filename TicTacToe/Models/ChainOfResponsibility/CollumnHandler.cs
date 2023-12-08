@@ -6,9 +6,9 @@ public class CollumnHandler: Handler
 {
     private Handler successor {get; set;}
 
-    public CollumnHandler()
+    public CollumnHandler(Mediator Hub): base(Hub)
     {
-        successor = new RowHandler();
+        successor = new RowHandler(Hub);
     }
 
     public override string handleRequest(string[] info)
@@ -28,5 +28,15 @@ public class CollumnHandler: Handler
         {
             return "";
         }
+    }
+
+    public override void SendMessage()
+    {
+        throw new NotImplementedException();
+    }
+
+    public override (string, Piece) ReceiveMessage(Player player, string[] info)
+    {
+        throw new NotImplementedException();
     }
 }

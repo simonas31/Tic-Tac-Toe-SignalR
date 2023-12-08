@@ -6,9 +6,9 @@ public class ObstaclesHandler: Handler
 {
     private Handler successor {get; set;}
 
-    public ObstaclesHandler()
+    public ObstaclesHandler(Mediator Hub): base(Hub)
     {
-
+        hub= Hub;
     }
 
     public override string handleRequest(string[] info)
@@ -26,5 +26,15 @@ public class ObstaclesHandler: Handler
         {
             return "";
         }
+    }
+
+    public override void SendMessage()
+    {
+        throw new NotImplementedException();
+    }
+
+    public override (string, Piece) ReceiveMessage(Player player, string[] info)
+    {
+        throw new NotImplementedException();
     }
 }
