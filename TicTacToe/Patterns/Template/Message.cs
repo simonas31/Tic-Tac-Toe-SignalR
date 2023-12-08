@@ -1,4 +1,5 @@
 ﻿using TicTacToe.Models;
+using TicTacToe.Models.Memento;
 
 namespace TicTacToe.Patterns.Template
 {
@@ -18,6 +19,17 @@ namespace TicTacToe.Patterns.Template
             {
                 return new TextMessage(message);
             }
+        }
+
+        public MessageMemento SaveToMemento()
+        {
+            return new MessageMemento(this.Text, this.SenderName);
+        }
+
+        public void RestoreFromMemento(MessageMemento memento)
+        {
+            this.Text = memento.Content;
+            this.SenderName = memento.SenderName;
         }
 
         protected abstract bool hasImage();

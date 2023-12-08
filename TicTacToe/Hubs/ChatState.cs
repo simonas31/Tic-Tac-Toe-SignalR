@@ -1,4 +1,5 @@
-﻿using TicTacToe.Patterns.Iterator;
+﻿using TicTacToe.Models.Memento;
+using TicTacToe.Patterns.Iterator;
 using TicTacToe.Patterns.Template;
 
 namespace TicTacToe.Hubs
@@ -28,7 +29,7 @@ namespace TicTacToe.Hubs
 
         public void AddMessage(Message msg)
         {
-            lock(messageLock)
+            lock (messageLock)
             {
                 _messages.AddItem(msg);
             }
@@ -47,6 +48,31 @@ namespace TicTacToe.Hubs
             lock (messageLock)
             {
                 return _messages;
+            }
+        }
+
+        public bool RemoveMessage(string senderName, string content)
+        {
+            lock (messageLock)
+            {
+                // Find the message to remove
+                Message messageToRemove = null;
+                foreach (var msg in _messages.getItems())
+                {
+                    if (msg.SenderName == senderName && msg.Text == content)
+                    {
+                        messageToRemove = msg;
+                        break;
+                    }
+                }
+
+                // Remove the message if found
+                if (messageToRemove != null)
+                {
+                    _messages.getItems().Remove(messageToRemove);
+                    return true;
+                }
+                return false;
             }
         }
     }
