@@ -130,9 +130,11 @@ namespace TicTacToe.Hubs
 			// Notify everyone of the valid move. Only send what is necessary (instead of sending whole board)
 			game.PlacePiece(row, col);
             await Groups.AddToGroupAsync(Context.ConnectionId, game.GameRoomName);
+            
 			ConcreteMediator mediator = new ConcreteMediator();
 			mediator.setHandler(new BoardSizeHandler(mediator));
 			string[] chain = mediator.callHandler( new Player("","", "") ,new string[] { game.BoardSize().ToString(), col.ToString(), row.ToString(), game.ToggleObstacles.ToString() }).Split(':');
+
             await Clients.Group(game.GameRoomName).SendAsync("piecePlaced", row, col, playerMakingTurn.Piece.Value, playerMakingTurn.Piece.Value, chain[0], chain[1], chain[2], chain[3]);
 
             // check if game is over (won or tie)

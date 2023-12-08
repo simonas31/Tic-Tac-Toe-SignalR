@@ -3,6 +3,7 @@
     const textInput = $('#messageInput');
     const chat = $('#chat');
     const sendMessageBtn = $('#sendMessageBtn');
+    const undoMessageBtn = $('#undoMessageBtn');
     const username = $('#username');
     const messagesQueue = [];
 
@@ -21,7 +22,12 @@
 
     //when message is received then add message to chat
     chatHub.on('ReceiveMessage', function (message) {
+        chatHub.invoke('AddMessageToHistory', message);
         addMessageToChat(message);
+    });
+
+    chatHub.on('MessageUndone', function (message) {
+        undoMessage();
     });
 
     //Send message
@@ -34,6 +40,7 @@
     sendMessageBtn.on('click', () => {
         sendMessage();
     });
+
 
     function sendMessage() {
         messagesQueue.push(textInput.val());
@@ -62,6 +69,21 @@
         textInput.val("");
 
         chatHub.invoke('SendMessage', JSON.stringify(msg));
+    }
+
+    undoMessageBtn.on('click', () => {
+        undoMessage();
+    });
+
+    function undoMessage() {
+        chatHub.invoke('UndoLastMessage')
+            .then(() => {
+                // Remove or alter the last message in the chat UI
+                //chat.children().first().remove();
+            })
+            .catch(function (err) {
+                console.error(err.toString());
+            });
     }
 
     function addMessageToChat(message) {

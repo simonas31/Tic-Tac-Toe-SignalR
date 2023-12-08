@@ -2,7 +2,7 @@
 using TicTacToe.Controllers;
 using TicTacToe.GameObjects;
 using TicTacToe.Interfaces;
-using TicTacToe.Models.DecoratorPattern;
+using TicTacToe.Models.Flyweight;
 using TicTacToe.Models.Flyweight;
 
 namespace TicTacToe.Models

@@ -1,10 +1,12 @@
 using TicTacToe.Hubs;
+using TicTacToe.Models.Memento;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddSignalR();
+builder.Services.AddSingleton<ChatCaretaker>();
 
 var app = builder.Build();
 
