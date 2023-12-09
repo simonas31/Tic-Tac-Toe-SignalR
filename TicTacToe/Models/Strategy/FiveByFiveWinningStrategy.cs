@@ -1,75 +1,23 @@
 using TicTacToe.GameObjects;
+using TicTacToe.Interfaces;
+using TicTacToe.Patterns.state;
 
 namespace TicTacToe.Models.Strategy
 {
     public class FiveByFiveWinningStrategy : IWinningStrategy
     {
-        public bool IsFiveInRow(Proxy[,] Pieces)
+        private IWinningState currentState;
+        public Proxy[,] Pieces { get; private set; }
+        public FiveByFiveWinningStrategy()
         {
-            int rows = Pieces.GetLength(0);
-            int cols = Pieces.GetLength(1);
-
-            // Check all rows
-            for (int row = 0; row < rows; row++)
-            {
-                for (int col = 0; col <= cols - 5; col++)
-                {
-                    if (Pieces[row, col] != null && !string.IsNullOrWhiteSpace(Pieces[row, col].requestValue()) &&
-                        Pieces[row, col].requestValue() == Pieces[row, col + 1].requestValue() &&
-                        Pieces[row, col + 1].requestValue() == Pieces[row, col + 2].requestValue() &&
-                        Pieces[row, col + 2].requestValue() == Pieces[row, col + 3].requestValue() &&
-                        Pieces[row, col + 3].requestValue() == Pieces[row, col + 4].requestValue())
-                    {
-                        return true;
-                    }
-                }
-            }
-
-            // Check all columns
-            for (int col = 0; col < cols; col++)
-            {
-                for (int row = 0; row <= rows - 5; row++)
-                {
-                    if (Pieces[row, col] != null && !string.IsNullOrWhiteSpace(Pieces[row, col].requestValue()) &&
-                        Pieces[row, col].requestValue() == Pieces[row + 1, col].requestValue() &&
-                        Pieces[row + 1, col].requestValue() == Pieces[row + 2, col].requestValue() &&
-                        Pieces[row + 2, col].requestValue() == Pieces[row + 3, col].requestValue() &&
-                        Pieces[row + 3, col].requestValue() == Pieces[row + 4, col].requestValue())
-                    {
-                        return true;
-                    }
-                }
-            }
-
-            // Check diagonals
-            for (int row = 0; row <= rows - 5; row++)
-            {
-                for (int col = 0; col <= cols - 5; col++)
-                {
-                    // Check diagonal from upper left to lower right
-                    if (Pieces[row, col] != null && !string.IsNullOrWhiteSpace(Pieces[row, col].requestValue()) &&
-                        Pieces[row, col].requestValue() == Pieces[row + 1, col + 1].requestValue() &&
-                        Pieces[row + 1, col + 1].requestValue() == Pieces[row + 2, col + 2].requestValue() &&
-                        Pieces[row + 2, col + 2].requestValue() == Pieces[row + 3, col + 3].requestValue() &&
-                        Pieces[row + 3, col + 3].requestValue() == Pieces[row + 4, col + 4].requestValue())
-                    {
-                        return true;
-                    }
-
-                    // Check diagonal from upper right to lower left
-                    if (Pieces[row, col + 4] != null && !string.IsNullOrWhiteSpace(Pieces[row, col + 4].requestValue()) &&
-                        Pieces[row, col + 4].requestValue() == Pieces[row + 1, col + 3].requestValue() &&
-                        Pieces[row + 1, col + 3].requestValue() == Pieces[row + 2, col + 2].requestValue() &&
-                        Pieces[row + 2, col + 2].requestValue() == Pieces[row + 3, col + 1].requestValue() &&
-                        Pieces[row + 3, col + 1].requestValue() == Pieces[row + 4, col].requestValue())
-                    {
-                        return true;
-                    }
-                }
-            }
-
-            return false;
+            currentState = new FiveInRowState();
         }
+
+        public void ChangeState(IWinningState newState)
+        {
+            currentState = newState;
+        }
+        public bool IsFiveInRow(Proxy[,] pieces) => currentState.IsInRow(pieces);
 
 
         public bool IsBoardFull(Proxy[,] Pieces)
@@ -104,6 +52,11 @@ namespace TicTacToe.Models.Strategy
         public bool IsSixInRow(Proxy[,] pieces)
         {
             return false;
+        }
+
+        public bool Accept(IWinningStrategyVisitor visitor)
+        {
+            return visitor.Visit(this);
         }
     }
 

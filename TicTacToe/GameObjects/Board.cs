@@ -1,13 +1,14 @@
 ﻿using TicTacToe.Interfaces;
 using TicTacToe.Models.DecoratorPattern;
 using TicTacToe.Models.Flyweight;
+using TicTacToe.Patterns.Composite;
 
 namespace TicTacToe.GameObjects
 {
     /// <summary>
     /// Represents a Tic-Tac-Toe board and where players have placed their pieces.
     /// </summary>
-    public class Board : ITicTacToeBoard
+    public class Board : ITicTacToeBoard, IComponent
     {
         /// <summary>
         /// The number of pieces that have been placed on the board.
@@ -108,7 +109,34 @@ namespace TicTacToe.GameObjects
 
             return string.Join(", ", piecesList);
         }
-        
+        private IComponent[,] compositeCells;
+        public void Display(int indentationLevel)
+        {
+            for (int i = 0; i < compositeCells.GetLength(0); i++)
+            {
+                for (int j = 0; j < compositeCells.GetLength(1); j++)
+                {
+                    compositeCells[i, j].Display(indentationLevel + 1);
+                }
+                Console.WriteLine();
+            }
+        }
+
+        public string GetValue()
+        {
+            // Flatten the composite values into a single string
+            List<string> compositeList = new List<string>();
+
+            for (int i = 0; i < compositeCells.GetLength(0); i++)
+            {
+                for (int j = 0; j < compositeCells.GetLength(1); j++)
+                {
+                    compositeList.Add(compositeCells[i, j].GetValue());
+                }
+            }
+
+            return string.Join(", ", compositeList);
+        }
 
     }
 }
