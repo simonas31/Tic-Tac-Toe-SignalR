@@ -1,77 +1,21 @@
 ﻿using TicTacToe.GameObjects;
+using TicTacToe.Interfaces;
+using TicTacToe.Patterns.state;
 
 namespace TicTacToe.Models
 {
     public class SixBySixWinningStrategy : IWinningStrategy
     {
-        public bool IsSixInRow(Proxy[,] Pieces)
+        private IWinningState currentState;
+        public Proxy[,] Pieces { get; private set; }
+        public SixBySixWinningStrategy()
         {
-            int rows = Pieces.GetLength(0);
-            int cols = Pieces.GetLength(1);
-
-            // Check all rows
-            for (int row = 0; row < rows; row++)
-            {
-                for (int col = 0; col <= cols - 6; col++)
-                {
-                    if (Pieces[row, col] != null && !string.IsNullOrWhiteSpace(Pieces[row, col].requestValue()) &&
-                        Pieces[row, col + 1].requestValue() == Pieces[row, col + 2].requestValue() &&
-                        Pieces[row, col + 2].requestValue() == Pieces[row, col + 3].requestValue() &&
-                        Pieces[row, col + 3].requestValue() == Pieces[row, col + 4].requestValue() &&
-                        Pieces[row, col + 4].requestValue() == Pieces[row, col + 5].requestValue())
-                    {
-                        return true;
-                    }
-                }
-            }
-
-            // Check all columns
-            for (int col = 0; col < cols; col++)
-            {
-                for (int row = 0; row <= rows - 6; row++)
-                {
-                    if (Pieces[row, col] != null && !string.IsNullOrWhiteSpace(Pieces[row, col].requestValue()) &&
-                        Pieces[row, col].requestValue() == Pieces[row + 1, col].requestValue() &&
-                        Pieces[row + 1, col].requestValue() == Pieces[row + 2, col].requestValue() &&
-                        Pieces[row + 2, col].requestValue() == Pieces[row + 3, col].requestValue() &&
-                        Pieces[row + 3, col].requestValue() == Pieces[row + 4, col].requestValue() &&
-                        Pieces[row + 4, col].requestValue() == Pieces[row + 5, col].requestValue())
-                    {
-                        return true;
-                    }
-                }
-            }
-
-            // Check diagonals
-            for (int row = 0; row <= rows - 6; row++)
-            {
-                for (int col = 0; col <= cols - 6; col++)
-                {
-                    // Check diagonal from upper left to lower right
-                    if (Pieces[row, col] != null && !string.IsNullOrWhiteSpace(Pieces[row, col].requestValue()) &&
-                        Pieces[row, col].requestValue() == Pieces[row + 1, col + 1].requestValue() &&
-                        Pieces[row + 1, col + 1].requestValue() == Pieces[row + 2, col + 2].requestValue() &&
-                        Pieces[row + 2, col + 2].requestValue() == Pieces[row + 3, col + 3].requestValue() &&
-                        Pieces[row + 3, col + 3].requestValue() == Pieces[row + 4, col + 4].requestValue() &&
-                        Pieces[row + 4, col + 4].requestValue() == Pieces[row + 5, col + 5].requestValue())
-                    {
-                        return true;
-                    }
-
-                    // Check diagonal from upper right to lower left
-                    if (Pieces[row, col + 5] != null && !string.IsNullOrWhiteSpace(Pieces[row, col + 5].requestValue()) &&
-                        Pieces[row, col + 5].requestValue() == Pieces[row + 1, col + 4].requestValue() &&
-                        Pieces[row + 1, col + 4].requestValue() == Pieces[row + 2, col + 3].requestValue() &&
-                        Pieces[row + 2, col + 3].requestValue() == Pieces[row + 3, col + 2].requestValue() &&
-                        Pieces[row + 3, col + 2].requestValue() == Pieces[row + 4, col + 1].requestValue() &&
-                        Pieces[row + 4, col + 1].requestValue() == Pieces[row + 5, col].requestValue())
-                    {
-                        return true;
-                    }
-                }
-            }
-
-            return false;
+            currentState = new SixInRowState();
+        }
+        public bool IsSixInRow(Proxy[,] pieces) => currentState.IsInRow(pieces);
+        public void ChangeState(IWinningState newState)
+        {
+            currentState = newState;
         }
 
 
@@ -96,7 +40,7 @@ namespace TicTacToe.Models
         }
         public bool IsFourInRow(Proxy[,] Pieces)
         {
-  
+
             return false;
         }
         public bool IsFiveInRow(Proxy[,] Pieces)
@@ -107,6 +51,10 @@ namespace TicTacToe.Models
         public bool IsThreeInRow(Proxy[,] Pieces)
         {
             // Implement a method that always returns false for a 3x3 board.
+            return false;
+        }
+        public bool Accept(IWinningStrategyVisitor visitor)
+        {
             return false;
         }
     }

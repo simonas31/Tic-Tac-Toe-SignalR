@@ -1,8 +1,9 @@
 using TicTacToe.Interfaces;
+using TicTacToe.Patterns.Composite;
 
 namespace TicTacToe.GameObjects
 {
-    public class Cell : ISubject
+    public class Cell : ISubject, IComponent
     {
         public string Value { get; set; }
 
@@ -59,6 +60,15 @@ namespace TicTacToe.GameObjects
         public void requestUpdate(string value)
         {
             Set(value);
+        }
+        public void Display(int indentationLevel)
+        {
+            Console.Write($" {Value} ");
+        }
+
+        public string GetValue()
+        {
+            return Value;
         }
     }
 }
