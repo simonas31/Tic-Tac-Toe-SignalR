@@ -5,6 +5,7 @@ using TicTacToe.GameObjects;
 using TicTacToe.Patterns.Template;
 using TicTacToe.Patterns.Iterator;
 using TicTacToe.Models.Memento;
+using TicTacToe.Patterns.Interpreter;
 
 namespace TicTacToe.Hubs
 {
@@ -30,6 +31,16 @@ namespace TicTacToe.Hubs
             {
                 msg = new TextMessage();
             }
+
+            Context context = new Context(msgData.Text);
+            CombineExpression comb = new CombineExpression();
+            SubtractExpression sub = new SubtractExpression();
+
+            NonTerminalExpression nte = new NonTerminalExpression(comb, sub);
+
+            var result = nte.Interpret(context);
+
+            msgData.Text = result;
 
             var builtMessage = msg.BuildMessage(msgData);
 
